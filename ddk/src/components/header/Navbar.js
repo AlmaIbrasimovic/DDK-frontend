@@ -5,7 +5,7 @@ import Dropdown from './Dropdown'
 import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import logo from './logo.jpg';
+import logo from './logo.png';
 
 function Navbar() {
     const [click, setClick] = useState(false)
@@ -36,7 +36,9 @@ function Navbar() {
         <>
         <nav className = "navbar">
             <Link to = "/" className = "navbar-logo">
-            Crveni križ FBiH
+                <img src = {logo} height="63" className="logo"/>
+                CK FBiH
+                Darivanje krvi
             </Link>
             <div className = "menu-icon" onClick={handleClick}>
                 <i className = {click ? "fas fa-times" : "fas fa-bars"} />
@@ -44,7 +46,7 @@ function Navbar() {
             <ul className = {click ? "nav-menu active" : "nav-menu"}>
                 <li className = "nav-item">
                     <Link to = "/" className = "nav-links" onClick = {closeMobileMenu}>
-                        Početna
+                        Centri
                     </Link>
                 </li>
                 <li 
@@ -62,16 +64,15 @@ function Navbar() {
                         Kontakt
                     </Link>
                 </li>
-                
-                <Button className="TEST"
-                    endIcon={<AccountCircleIcon style={{ fontSize: 30 }}/>}
-                >
-                    Prijavi se
-                </Button>
-                
+                <li className = "nav-item">
+                    <a href = "https://bhavaniravi.medium.com/reactjs-buttons-cheatsheet-3d830533ac90" className = "nav-links">
+                        Prijavi se
+                        <i className="fas fa-user-alt"/>
+                    </a>
+                </li>
+               
             </ul>
         </nav>
-        
         </>
     )
 } 
