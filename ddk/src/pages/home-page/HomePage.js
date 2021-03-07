@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Link} from  'react-router-dom'
-import './Navbar.css'
+import './HomePage.css'
 import Dropdown from './Dropdown'
 import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -26,7 +26,7 @@ import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/navigation/navigation.scss';
 SwiperCore.use([Autoplay, Pagination, Navigation,EffectCube,EffectCoverflow, EffectFlip]);
 
-function Navbar() {
+function HomePage() {
     const [click, setClick] = useState(false)
     const [dropdown, setDropdown] = useState(false)
     const handleClick = () => setClick(!click)
@@ -68,18 +68,18 @@ function Navbar() {
                 </a>
             <div className = "navbar-brand">
                 <img src = {logo} class="image is-96x96"/>
-                <p>CK FBiH Darivanje krvi</p>
+                <Link to ="/" className = "navbar-brand-link">CK FBiH Darivanje krvi</Link>
             </div>
             <div className="navbar-menu" id = "navMenu">
                 <div className="navbar-end">
-                    <a className="navbar-item">Akcije darivanja krvi</a>
+                    <Link to ="/akcije-darivanja" className="navbar-item">Akcije darivanja krvi</Link>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link" id="infoDropdown" onClick={infoClick}>
                             Info
                         </a>
                         <div class="navbar-dropdown">
                             <a class="navbar-item">
-                                Zašto darivati krv
+                                Zašto darovati krv
                             </a>
                             <a class="navbar-item">
                                 Krvne grupe
@@ -101,8 +101,8 @@ function Navbar() {
                             </a>
                         </div>
                     </div>
-                    <a className = "navbar-item">Transfuzijski centri</a>
-                    <button class="button is-danger is-outlined">
+                    <Link to = "/transfuzijski-centri" className = "navbar-item">Transfuzijski centri</Link>
+                    <button class="button is-danger is-outlined ">
                         <span class="icon">
                             <i class="fas fa-user-alt"></i>
                         </span>
@@ -111,7 +111,6 @@ function Navbar() {
                 </div>
             </div>
         </div>
-  
         <section class="hero is-fullheight">
             <Swiper className = "coverImage"
                 spaceBetween={0}
@@ -131,59 +130,11 @@ function Navbar() {
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={Rick}></img>
-                </SwiperSlide>
-            
-                
-            </Swiper>
-        
+                </SwiperSlide>                
+            </Swiper>       
         </section>
-        {/* 
-        <nav className = "navbar">
-            <div className="navbar-div">
-            <Link to = "/" className = "navbar-logo">
-                <img src = {logo} height="63" className="logo"/>
-               <p>CK FBiH
-                Darivanje krvi</p> 
-            </Link>
-            </div>
-           
-            <div className = "menu-icon" onClick={handleClick}>
-                <i className = {click ? "fas fa-times" : "fas fa-bars"} />
-            </div>
-            <ul className = {click ? "nav-menu active" : "nav-menu"}>
-                <li className = "nav-item">
-                    <Link to = "/" className = "nav-links" onClick = {closeMobileMenu}>
-                        Centri
-                    </Link>
-                </li>
-                <li 
-                    className = "nav-item"
-                    onMouseEnter={onMouseEnter}
-                    onMouseLeave={onMouseLeave}
-                >
-                    <Link to = "/info" className = "nav-links" onClick = {closeMobileMenu}>
-                        Info <i className = "fas fa-caret-down"/>
-                    </Link>
-                    {dropdown && <Dropdown/>}
-                </li>
-                <li className = "nav-item">
-                    <Link to = "/kontakt" className = "nav-links" onClick = {closeMobileMenu}>
-                        Kontakt
-                    </Link>
-                </li>
-                <li className = "nav-item">
-                    <a href = "https://bhavaniravi.medium.com/reactjs-buttons-cheatsheet-3d830533ac90" className = "nav-links">
-                        Prijavi se
-                        <i className="fas fa-user-alt"/>
-                    </a>
-                </li>
-
-            </ul>
-        </nav>*/}
         </>
     )
-    
-    
 } 
 
-export default Navbar;
+export default HomePage;
