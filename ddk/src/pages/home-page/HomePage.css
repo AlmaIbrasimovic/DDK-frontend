@@ -136,7 +136,11 @@ a.navbar-item:hover {
   .navbar-end {
     margin-top: 2%;
   }
+  
   .button.is-danger.is-outlined {
+    background-color: transparent;
+    border-color: #E42313;
+    color: #E42313;
     margin-top: 8%;
   }
 }

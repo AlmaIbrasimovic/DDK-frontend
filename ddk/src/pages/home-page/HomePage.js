@@ -24,40 +24,19 @@ import Thor from './thor.jpg'
 import SwiperCore, { Autoplay,Pagination, Navigation, EffectFade, EffectCube, EffectCoverflow, EffectFlip} from "swiper"
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/navigation/navigation.scss';
+
 SwiperCore.use([Autoplay, Pagination, Navigation,EffectCube,EffectCoverflow, EffectFlip]);
 
 function HomePage() {
-    const [click, setClick] = useState(false)
-    const [dropdown, setDropdown] = useState(false)
-    const handleClick = () => setClick(!click)
-    const closeMobileMenu = () => setClick(false)
-    
-    const onMouseEnter = () => {
-        if (window.innerWidth < 960) {
-            setDropdown (true)
-        }
-        else {
-            setDropdown (true)
-        }
-    }
-
-    
-    const onMouseLeave = () => {
-        if (window.innerWidth < 960) {
-            setDropdown (false)
-        }
-        else {
-            setDropdown (false)
-        }
-    }
     function clickBurger(event){
         document.getElementsByClassName('navbar-burger')[0].classList.toggle('is-active');
         document.getElementsByClassName('navbar-menu')[0].classList.toggle('is-active');
     }
+    
     function infoClick(event){
         document.getElementsByClassName('has-dropdown')[0].classList.toggle('is-active');
     }
-  
+
     return (
         <>
         <div className = "navbar">
@@ -102,12 +81,20 @@ function HomePage() {
                         </div>
                     </div>
                     <Link to = "/transfuzijski-centri" className = "navbar-item">Transfuzijski centri</Link>
-                    <button class="button is-danger is-outlined ">
-                        <span class="icon">
-                            <i class="fas fa-user-alt"></i>
-                        </span>
-                        <span>Prijavi se</span>
-                    </button>
+                    <div className = "navbar-buttons">
+                        <Link to ="/login" class="button is-danger is-outlined ">
+                            <span class="icon">
+                                <i class="fas fa-user-alt"></i>
+                            </span>
+                            <span>Prijavi se</span>
+                        </Link>
+                        <Link to = "/kreiraj-racun" class="button is-danger is-outlined">
+                            <span class="icon">
+                                <i class="fas fa-user-plus"></i>
+                            </span>
+                            <span>Kreiraj račun</span>
+                        </Link>
+                    </div>                
                 </div>
             </div>
         </div>
