@@ -16,6 +16,15 @@ import SubMenu from './SubMenu';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { red } from '@material-ui/core/colors';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper.scss';
+import Cobain from './cobain.jpg'
+import Rick from './rick.jpg'
+import Thor from './thor.jpg'
+import SwiperCore, { Autoplay,Pagination, Navigation, EffectFade, EffectCube, EffectCoverflow, EffectFlip} from "swiper"
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/navigation/navigation.scss';
+SwiperCore.use([Autoplay, Pagination, Navigation,EffectCube,EffectCoverflow, EffectFlip]);
 
 function Navbar() {
     const [click, setClick] = useState(false)
@@ -43,6 +52,10 @@ function Navbar() {
     }
     function clickBurger(event){
         document.getElementsByClassName('navbar-burger')[0].classList.toggle('is-active');
+        document.getElementsByClassName('navbar-menu')[0].classList.toggle('is-active');
+    }
+    function infoClick(event){
+        document.getElementsByClassName('has-dropdown')[0].classList.toggle('is-active');
     }
   
     return (
@@ -55,13 +68,13 @@ function Navbar() {
                 </a>
             <div className = "navbar-brand">
                 <img src = {logo} class="image is-96x96"/>
-                <p>CK FBiH Darivanje krvi</p> 
+                <p>CK FBiH Darivanje krvi</p>
             </div>
             <div className="navbar-menu" id = "navMenu">
                 <div className="navbar-end">
                     <a className="navbar-item">Akcije darivanja krvi</a>
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
+                        <a class="navbar-link" id="infoDropdown" onClick={infoClick}>
                             Info
                         </a>
                         <div class="navbar-dropdown">
@@ -97,9 +110,33 @@ function Navbar() {
                     </button>
                 </div>
             </div>
-            
         </div>
   
+        <section class="hero is-fullheight">
+            <Swiper className = "coverImage"
+                spaceBetween={0}
+                slidesPerView={1}
+                autoplay={{ delay: 3000 }}
+                pagination={{ clickable: true }}
+                navigation
+                effect="coverflow"
+                onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) => console.log(swiper)}
+                >
+                <SwiperSlide>
+                    <img src={Thor}></img>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src = {Cobain}></img>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={Rick}></img>
+                </SwiperSlide>
+            
+                
+            </Swiper>
+        
+        </section>
         {/* 
         <nav className = "navbar">
             <div className="navbar-div">
