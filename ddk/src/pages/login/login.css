@@ -3,6 +3,15 @@
     background-color: red;
 }
 
+.login-a {
+    color: black;
+    font-size: 9.5px;
+    margin-top:48%;
+}
+
+.button-login {
+    color: blue;
+}
 
 .sign-in-form {
     position: relative;
@@ -14,6 +23,10 @@
     display: flex;
     justify-content: center;
     align-items: center
+}
+
+.login-grid {
+    margin-top: 8%;
 }
 
 .sign-in-form button {
