@@ -171,7 +171,7 @@ export class login extends Component {
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link href="#" variant="body2">
+                                    <Link href="/kreiraj-racun" variant="body2">
                                         Nemate račun? Kreirajte novi
                                     </Link>
                                 </Grid>

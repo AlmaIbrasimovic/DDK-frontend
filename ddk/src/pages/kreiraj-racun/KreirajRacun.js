@@ -3,16 +3,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import '../../pages/login/login.scss'
-import logo from '../../assets/img/logo.png';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import '../../pages/login/login.scss'
 import './kreirajRacun.css'
+import logo from '../../assets/img/logo.png';
 
 const spolovi = [
   {
@@ -117,9 +114,6 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-  },
-  container: {
-    
   }
 }));
 
@@ -150,7 +144,7 @@ export default function KreirajRacun() {
           <img src={logo} class="image is-64x64" />
         </a>
         <Typography component="h1" variant="h5">
-          Kreiraj račun
+         
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -186,7 +180,6 @@ export default function KreirajRacun() {
                 label="Spol"
                 value={spol}
                 onChange={handleChange}
-
               >
                 {spolovi.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
@@ -289,7 +282,6 @@ export default function KreirajRacun() {
                 label="Krvna grupa"
                 value={krvnaGrupa}
                 onChange={handleChangeKrvnaGrupa}
-
               >
                 {krvneGrupe.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
@@ -300,8 +292,7 @@ export default function KreirajRacun() {
             </Grid>
             <Grid item xs={12} sm={4}>
               <TextField
-                variant="outlined"
-                required
+                variant="outlined"f                
                 fullWidth
                 id="broj"
                 label="Broj darivanja krvi"
@@ -332,24 +323,19 @@ export default function KreirajRacun() {
                 autoComplete="current-password"
               />
             </Grid>
-
           </Grid>
           <a href="#" class="button-login">Kreiraj račun</a>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/login" variant="body2">
                 Već imate račun? Prijavite se.
               </Link>
             </Grid>
           </Grid>
         </form>
-
-
-
+        <a className = "kreiraj-racun-a" href="https://www.freepik.com/vectors/background">Background vector created by freepik - www.freepik.com</a>
       </div>
-
     </Container>
-
     </div>
     
   );

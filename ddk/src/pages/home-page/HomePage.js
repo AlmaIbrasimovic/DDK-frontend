@@ -57,25 +57,25 @@ function HomePage() {
                             Info
                         </a>
                         <div class="navbar-dropdown">
-                            <a class="navbar-item">
+                            <a href = "/zasto-darovati" class="navbar-item">
                                 Zašto darovati krv
                             </a>
-                            <a class="navbar-item">
+                            <a href ="/krvne-grupe" class="navbar-item">
                                 Krvne grupe
                             </a>
-                            <a class="navbar-item">
+                            <a href = "/kako-pomaze" class="navbar-item">
                                 Kako pomaže darovana krv
                             </a>
-                            <a class="navbar-item">
+                            <a href = "/proces-darivanja" class="navbar-item">
                                 Proces darivanja krvi
                             </a>
-                            <a class="navbar-item">
+                            <a href = "/vodic" class="navbar-item">
                                 Vodič za darivaoce krvi
                             </a>
-                            <a class="navbar-item">
+                            <a href = "/faq" class="navbar-item">
                                 Česta pitanja o darivanju krvi
                             </a>
-                            <a class="navbar-item">
+                            <a href = "/rjecnik" class="navbar-item">
                                 Rječnik pojmova
                             </a>
                         </div>

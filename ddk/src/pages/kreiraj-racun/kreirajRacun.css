@@ -1,6 +1,12 @@
 .kreiraj-racun-div {
-    background: url('../../assets/img/signUP.jpg') center center/cover no-repeat;
+    background: url('../../assets/img/kreiraj.jpg') center center/cover no-repeat;
     overflow: hidden;
     height: 100vh;
     width: 100vw;
+}
+
+.kreiraj-racun-a {
+    color: black;
+    font-size: 9.5px;
+    margin-top: 28%;
 }
