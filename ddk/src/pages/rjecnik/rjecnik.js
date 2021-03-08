@@ -1,8 +1,11 @@
 import React from 'react';
+import Navbar from '../home-page/Navbar'
 
 function rjecnik() {
     return (
-      <h1>Trans centri</h1>
+      <>
+      <Navbar />
+      </>
     );
   }
   

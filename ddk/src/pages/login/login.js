@@ -48,7 +48,7 @@ const useStyles = (theme) => ({
     },
     form: {
         width: '100%',
-        marginTop: theme.spacing(1)
+        marginTop: theme.spacing(5)
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
@@ -110,11 +110,9 @@ export class login extends Component {
                     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                         <div className={classes.paper}>
                         <a href="/" id="bottle" onclick="document.location=this.id+'.html';return false;" >
-                            <img src = {logo} class="image is-64x64"/>
+                            <img src = {logo} class="image is-96x96"/>
                         </a>  
-                        <Typography component="h1" variant="h5">
-                            Prijava na račun
-                        </Typography>
+                   
                         <form className={classes.form}>
                             <TextField
                                 variant="standard"

@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '180%',
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(6),
     backgroundColor:'white'
   },
   submit: {
@@ -141,7 +141,7 @@ export default function KreirajRacun() {
       <CssBaseline />
       <div className={classes.paper}>
         <a href="/" id="bottle" onclick="document.location=this.id+'.html';return false;" >
-          <img src={logo} class="image is-64x64" />
+          <img src={logo} class="image is-96x96"/>
         </a>
         <Typography component="h1" variant="h5">
          

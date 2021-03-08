@@ -1,6 +1,6 @@
 
 import './App.css';
-import Navbar from './pages/home-page/HomePage';
+import Navbar from './pages/home-page/Navbar';
 import AkcijeDarivanja from './pages/akcije-darivanja/AkcijeDarivanja';
 import TransfuzijskiCentri from './pages/transfuzijski-centri/TransfuzijskiCentri'
 import Login from './pages/login/login'
@@ -8,6 +8,7 @@ import KrvneGrupe from './pages/krvne-grupe/krvneGrupe'
 import Rjecnik from './pages/rjecnik/rjecnik'
 import KreirajRacun from './pages/kreiraj-racun/KreirajRacun'
 import KakoPomaze from './pages/kako-pomaze/kakoPomaze'
+import HomePage from './pages/home-page/HomePage'
 import faq from './pages/faq/faq'
 import Vodic from './pages/vodic/vodic'
 import ZastoDarovati from './pages/zasto-darovati/zastoDarivati'
@@ -18,8 +19,9 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 function App() {
   return (
    <Router>
+ 
      <Switch>
-       <Route path='/' exact component={Navbar} />
+       <Route path='/' exact component={HomePage} />
        <Route path='/akcije-darivanja' exact component={AkcijeDarivanja} />
        <Route path='/transfuzijski-centri' exact component={TransfuzijskiCentri} />
        <Route path='/login' exact component={Login} />

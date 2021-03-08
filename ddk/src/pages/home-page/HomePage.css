@@ -120,6 +120,7 @@ a.navbar-item:hover {
   height: 100vh;
   margin-top: 0;
   border-top: 3px solid #E42313;
+  
 }
 
 .navbar {
@@ -129,6 +130,7 @@ a.navbar-item:hover {
   font-size: 1.1rem;
   position:fixed;
   border-top: 3.5px solid #E42313;
+
 }
 
 
