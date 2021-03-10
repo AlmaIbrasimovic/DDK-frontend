@@ -102,16 +102,19 @@ const krvneGrupe = [
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   form: {
+    borderRadius: 10,
+    padding: theme.spacing(2), 
     width: '180%',
-    marginTop: theme.spacing(6),
+    marginTop: theme.spacing(3),
     backgroundColor:'white'
   },
+
   submit: {
     margin: theme.spacing(3, 0, 2),
   }
@@ -120,11 +123,34 @@ const useStyles = makeStyles((theme) => ({
 export default function KreirajRacun() {
   const classes = useStyles();
   const [spol, setSpol] = React.useState('');
+  const [ime, setIme] = React.useState('');
+  const [prezime, setPrezime] = React.useState('');
+  const [imeRoditelja, setImeRoditelja] = React.useState('');
   const [krvnaGrupa, setKrvnaGrupa] = React.useState('');
   const [kanton, setKanton] = React.useState('');
-
+  const [mjestoRodjenja, setMjestoRodjenja] = React.useState('');
+  const [mjestoPrebivalista, setMjestoPrebivalista] = React.useState('');
+  const [adresaPrebivalista, setAdresaPrebivalista] = React.useState('');
+  const [telefon, setTelefon] = React.useState('');
+  const [lozinka, setLozinka] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [brojDarivanja, setBrojDarivanja] = React.useState('');
+  const [zanimanje, setZanimanje] = React.useState('');
+  
   const handleChange = (event) => {
     setSpol(event.target.value);
+  };
+
+  const handleChangeIme = (event) => {
+    setIme(event.target.value);
+  };
+
+  const handleChangePrezime = (event) => {
+    setPrezime(event.target.value);
+  };
+
+  const handleChangeImeRoditelja = (event) => {
+    setImeRoditelja(event.target.value);
   };
 
   const handleChangeKrvnaGrupa = (event) => {
@@ -135,8 +161,56 @@ export default function KreirajRacun() {
     setKanton(event.target.value);
   };
 
+  const handleChangeMjestoRodjenja = (event) => {
+    setMjestoRodjenja(event.target.value);
+  };
+
+  const handleChangeMjestoPrebivalista = (event) => {
+    setMjestoPrebivalista(event.target.value);
+  };
+
+  const handleChangeAdresaPrebivalista = (event) => {
+    setAdresaPrebivalista(event.target.value);
+  };
+
+  const handleChangeBrojDarivanja = (event) => {
+    setBrojDarivanja(event.target.value);
+  };
+
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleChangeLozinka = (event) => {
+    setLozinka(event.target.value);
+  };
+
+  const handleChangeTelefon = (event) => {
+    setTelefon(event.target.value);
+  };
+
+  const handleChangeZanimanje = (event) => {
+    setZanimanje(event.target.value);
+  };
+
+  const kreirajRacun = () => {
+    console.log("krvna grupa " + krvnaGrupa)
+    console.log("ime " + ime)
+    console.log("prezime " + prezime)
+    console.log ("ime roditelja" + imeRoditelja)
+    console.log ("mjesto rodjenja " + mjestoRodjenja)
+    console.log ("mjesto prebi " + mjestoPrebivalista)
+    console.log ("adresa preb " + adresaPrebivalista)
+    console.log ("kanton " + kanton)
+    console.log ("telefon " + telefon)
+    console.log ("zanimanje " + zanimanje)
+    console.log ("broj darivanja " + brojDarivanja)
+    console.log ("email " + email)
+    console.log ("lozinka " + lozinka)
+  }
+
   return (
-    <div className = "kreiraj-racun-div">
+    <div className = "kreiraj-racun-div" >
       <Container component="main" maxWidth="xs" className={classes.container}>
       <CssBaseline />
       <div className={classes.paper}>
@@ -144,18 +218,19 @@ export default function KreirajRacun() {
           <img src={logo} class="image is-96x96"/>
         </a>
         <Typography component="h1" variant="h5">
-         
         </Typography>
         <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
+          <Grid container spacing={2} >
+            <Grid item xs={12} sm={4} >
               <TextField
                 autoComplete="fname"
                 name="ime"
                 variant="outlined"
                 required
+                value={ime}
                 fullWidth
                 id="ime"
+                onChange={handleChangeIme}
                 label="Ime"
                 autoFocus
               />
@@ -168,7 +243,21 @@ export default function KreirajRacun() {
                 id="prezime"
                 label="Prezime"
                 name="prezime"
+                value = {prezime}
+                onChange={handleChangePrezime}
                 autoComplete="lname"
+              />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="imeRoditelja"
+                value= {imeRoditelja}
+                onChange={handleChangeImeRoditelja}
+                label="Ime jednog roditelja"
+                name="imeRoditelja"
               />
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -205,20 +294,11 @@ export default function KreirajRacun() {
                 variant="outlined"
                 required
                 fullWidth
-                id="jmbg"
-                label="JMBG"
-                name="jmbg"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
                 id="mjestoRod"
                 label="Mjesto rođenja"
                 name="mjestoRod"
+                value={mjestoRodjenja}
+                onChange={handleChangeMjestoRodjenja}
                 autoComplete="lname"
               />
             </Grid>
@@ -230,6 +310,8 @@ export default function KreirajRacun() {
                 required
                 fullWidth
                 id="mjestoPreb"
+                value={mjestoPrebivalista}
+                onChange={handleChangeMjestoPrebivalista}
                 label="Mjesto prebivališta"
                 autoFocus
               />
@@ -241,6 +323,8 @@ export default function KreirajRacun() {
                 fullWidth
                 id="adresaPreb"
                 label="Adresa prebivališta"
+                value={adresaPrebivalista}
+                onChange={handleChangeAdresaPrebivalista}
                 name="adresaPreb"
                 autoComplete="lname"
               />
@@ -262,18 +346,31 @@ export default function KreirajRacun() {
                 ))}
               </TextField>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
                 id="telefon"
                 label="Kontakt telefon"
+                value={telefon}
+                onChange={handleChangeTelefon}
                 name="telefon"
-                autoComplete="lname"
               />
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="zanimanje"
+                value={zanimanje}
+                onChange={handleChangeZanimanje}
+                label="Zanimanje"
+                name="zanimanje"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
             <TextField
                 id="standard-select-currency"
                 select
@@ -290,13 +387,15 @@ export default function KreirajRacun() {
                 ))}
               </TextField>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"f                
                 fullWidth
                 id="broj"
                 label="Broj darivanja krvi"
                 name="broj"
+                value={brojDarivanja}
+                onChange={handleChangeBrojDarivanja}
                 autoComplete="lname"
               />
             </Grid>
@@ -308,6 +407,8 @@ export default function KreirajRacun() {
                 id="email"
                 label="Email adresa"
                 name="email"
+                value={email}
+                onChange={handleChangeEmail}
                 autoComplete="email"
               />
             </Grid>
@@ -320,11 +421,13 @@ export default function KreirajRacun() {
                 label="Lozinka"
                 type="password"
                 id="lozinka"
+                value={lozinka}
+                onChange={handleChangeLozinka}
                 autoComplete="current-password"
               />
             </Grid>
           </Grid>
-          <a href="#" class="button-login">Kreiraj račun</a>
+          <a href="#" class="button-login" onClick = {kreirajRacun}>Kreiraj račun</a>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/login" variant="body2">

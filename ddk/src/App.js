@@ -13,6 +13,9 @@ import faq from './pages/faq/faq'
 import Vodic from './pages/vodic/vodic'
 import ZastoDarovati from './pages/zasto-darovati/zastoDarivati'
 import ProcesDarivanja from './pages/proces-darivanja/procesDarivanja'
+import Apozitivna from './pages/a-pozitivna/aPozitivna'
+import Aneg from './pages/a-negativna/aNegativna'
+import Bpos from './pages/b-pozitivna/bPozitivna'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 
@@ -33,6 +36,9 @@ function App() {
        <Route path='/faq' exact component={faq} />
        <Route path='/vodic' exact component={Vodic} />
        <Route path='/zasto-darovati' exact component={ZastoDarovati} />
+       <Route path='/a-pozitivna' exact component={Apozitivna} />
+       <Route path='/a-negativna' exact component={Aneg} />
+       <Route path='/b-pozitivna' exact component={Bpos} />
       </Switch>
    </Router>
   );

@@ -1,11 +1,85 @@
-.proba{
-    color: black;
-    height: 100vh;
-    overflow: hidden;
-    background-color: white;
+.krvne-grupe {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
+    padding-top: 113px;
 }
-.proba p{
-    margin-top: 113px;
-    height: 100vh;
 
+.krvne-grupe-right-side {
+    width: 50%;
+    border-top: 1.5px solid lightgray;
+    border-left: 1.5px solid lightgray;
 }
+
+.krvne-grupe-p-i {
+    font-size: 0.950rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+}
+
+.krvne-grupe-right-side p{
+    padding-left: 9px;
+    font-size: 0.950rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+}
+.krvne-grupe-left-side {
+   width: 50%;
+}
+
+.tipovi-krvne-grupe {
+    margin-top: 2%;
+}
+
+ul {
+    margin-top: 10px;
+    margin: 15px
+}
+
+.fa-ul-4-col {
+    column-count: 2;
+    margin-left: 5.7%;
+}
+
+li {
+    color: #E42313;
+    font-size: 16px;
+}
+
+.fas.fa-heartbeat {
+    padding-right: 8px;
+}
+
+.title-h1 {
+    color: #E42313;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+
+.krvne-grupe-p {
+    margin-top: 2%;
+}
+
+ul a {
+    color: #E42313;
+}
+
+.referenca {
+    font-size: 9px;
+    color:black
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 0px;
+    left: 16px;
+  }

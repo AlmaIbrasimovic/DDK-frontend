@@ -25,8 +25,13 @@ import SwiperCore, { Autoplay,Pagination, Navigation, EffectFade, EffectCube, Ef
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/navigation/navigation.scss';
 
-SwiperCore.use([Autoplay, Pagination, Navigation,EffectCube,EffectCoverflow, EffectFlip]);
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
+SwiperCore.use([Autoplay, Pagination, Navigation,EffectCube,EffectCoverflow, EffectFlip]);
+function handleClick(event) {
+    event.preventDefault();
+    console.info('You clicked a breadcrumb.');
+  }
 function Navbar() {
     function clickBurger(event){
         document.getElementsByClassName('navbar-burger')[0].classList.toggle('is-active');
@@ -53,6 +58,7 @@ function Navbar() {
                 <div className="navbar-end">
                     <Link to ="/akcije-darivanja" className="navbar-item">Akcije darivanja krvi</Link>
                     <div class="navbar-item has-dropdown is-hoverable">
+                       
                         <a class="navbar-link" id="infoDropdown" onClick={infoClick}>
                             Info
                         </a>
