@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from '../home-page/Navbar'
-import './aPozitivna.css'
+import './krvne-grupe-detalji.css'
 import APoz from '../../assets/img/A+.svg';
 
 function aPozitivna () {

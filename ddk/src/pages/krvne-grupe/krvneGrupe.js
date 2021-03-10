@@ -48,11 +48,11 @@ function krvneGrupe () {
         <li><a href="/a-pozitivna"><i class="fas fa-heartbeat"></i>A+</a></li>
         <li><a href="/b-pozitivna"><i class="fas fa-heartbeat"></i>B+</a></li>
         <li><a href="/ab-pozitivna"><i class="fas fa-heartbeat"></i>AB+</a></li>
-        <li><a href="/0-pozitivna"><i class="fas fa-heartbeat"></i>0+</a></li>
+        <li><a href="/nula-pozitivna"><i class="fas fa-heartbeat"></i>0+</a></li>
         <li><a href="/a-negativna"><i class="fas fa-heartbeat"></i>A-</a></li>
         <li><a href="/b-negativna"><i class="fas fa-heartbeat"></i>B-</a></li>
         <li><a href="/ab-negativna"><i class="fas fa-heartbeat"></i>AB-</a></li>
-        <li><a href="/0-negativna"><i class="fas fa-heartbeat"></i>0-</a></li>
+        <li><a href="/nula-negativna"><i class="fas fa-heartbeat"></i>0-</a></li>
       </ul>
       
     </div>

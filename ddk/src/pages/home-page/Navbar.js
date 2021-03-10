@@ -58,7 +58,6 @@ function Navbar() {
                 <div className="navbar-end">
                     <Link to ="/akcije-darivanja" className="navbar-item">Akcije darivanja krvi</Link>
                     <div class="navbar-item has-dropdown is-hoverable">
-                       
                         <a class="navbar-link" id="infoDropdown" onClick={infoClick}>
                             Info
                         </a>

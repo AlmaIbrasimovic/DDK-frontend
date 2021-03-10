@@ -13,9 +13,14 @@ import faq from './pages/faq/faq'
 import Vodic from './pages/vodic/vodic'
 import ZastoDarovati from './pages/zasto-darovati/zastoDarivati'
 import ProcesDarivanja from './pages/proces-darivanja/procesDarivanja'
-import Apozitivna from './pages/a-pozitivna/aPozitivna'
-import Aneg from './pages/a-negativna/aNegativna'
-import Bpos from './pages/b-pozitivna/bPozitivna'
+import Apozitivna from './pages/krvne-grupe/aPozitivna'
+import Aneg from './pages/krvne-grupe/aNegativna'
+import Bpos from './pages/krvne-grupe/bPozitivna'
+import Bneg from './pages/krvne-grupe/bNegativna'
+import ABpos from './pages/krvne-grupe/abPozitivna'
+import ABneg from './pages/krvne-grupe/abNegativna'
+import nulaPos from './pages/krvne-grupe/nulaPozitivna'
+import nulaNeg from './pages/krvne-grupe/nulaNegativna'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 
@@ -39,6 +44,11 @@ function App() {
        <Route path='/a-pozitivna' exact component={Apozitivna} />
        <Route path='/a-negativna' exact component={Aneg} />
        <Route path='/b-pozitivna' exact component={Bpos} />
+       <Route path='/b-negativna' exact component={Bneg} />
+       <Route path='/ab-pozitivna' exact component={ABpos} />
+       <Route path='/ab-negativna' exact component={ABneg} />
+       <Route path='/nula-pozitivna' exact component={nulaPos} />
+       <Route path='/nula-negativna' exact component={nulaNeg} />
       </Switch>
    </Router>
   );
