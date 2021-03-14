@@ -15,6 +15,7 @@ import ZastoDarovati from './pages/zasto-darovati/zastoDarivati'
 import ProcesDarivanja from './pages/proces-darivanja/procesDarivanja'
 import Apozitivna from './pages/krvne-grupe/aPozitivna'
 import Aneg from './pages/krvne-grupe/aNegativna'
+import Dashboard from './pages/DashboardView'
 import Bpos from './pages/krvne-grupe/bPozitivna'
 import Bneg from './pages/krvne-grupe/bNegativna'
 import ABpos from './pages/krvne-grupe/abPozitivna'
@@ -22,8 +23,9 @@ import ABneg from './pages/krvne-grupe/abNegativna'
 import nulaPos from './pages/krvne-grupe/nulaPozitivna'
 import nulaNeg from './pages/krvne-grupe/nulaNegativna'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-
-
+import GlobalStyles from './components/GlobalStyles';
+import theme from './theme';
+import { ThemeProvider } from '@material-ui/core';
 function App() {
   return (
    <Router>
@@ -38,8 +40,7 @@ function App() {
        <Route path='/rjecnik' exact component={Rjecnik} />
        <Route path='/kako-pomaze' exact component={KakoPomaze} />
        <Route path='/proces-darivanja' exact component={ProcesDarivanja} />
-       <Route path='/faq' exact component={faq} />
-       <Route path='/vodic' exact component={Vodic} />
+       <Route path='/faq' exact component={faq} />      
        <Route path='/zasto-darovati' exact component={ZastoDarovati} />
        <Route path='/a-pozitivna' exact component={Apozitivna} />
        <Route path='/a-negativna' exact component={Aneg} />
@@ -49,6 +50,10 @@ function App() {
        <Route path='/ab-negativna' exact component={ABneg} />
        <Route path='/nula-pozitivna' exact component={nulaPos} />
        <Route path='/nula-negativna' exact component={nulaNeg} />
+       <ThemeProvider theme={theme}>
+          <GlobalStyles />
+            <Route path='/vodic' exact component={Dashboard} />
+        </ThemeProvider>
       </Switch>
    </Router>
   );
