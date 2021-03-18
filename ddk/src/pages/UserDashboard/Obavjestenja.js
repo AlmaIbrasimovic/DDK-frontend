@@ -22,39 +22,38 @@ import {
 const data = [
   {
     id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
+    naziv: 'Darivanje krvi',
+    datum: '23.10.2020.',
+    vrijeme: '14:00'    ,
+    lokacija: 'Paromlinska 3, Sarajevo'
   },
   {
     id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
+    naziv: 'Darivanje krvi',
+    datum: '23.10.2020.',
+    vrijeme: '14:00'    ,
+    lokacija: 'Paromlinska 3, Sarajevo'
   },
   {
     id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
+    naziv: 'Darivanje krvi',
+    datum: '23.10.2020.',
+    vrijeme: '14:00'    ,
+    lokacija: 'Paromlinska 3, Sarajevo'  
   },
   {
     id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
+    naziv: 'Darivanje krvi',
+    datum: '23.10.2020.',
+    vrijeme: '14:00'    ,
+    lokacija: 'Paromlinska 3, Sarajevo' 
   },
   {
     id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
-  },
-  {
-    id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
+    naziv: 'Darivanje krvi',
+    datum: '23.10.2020.',
+    vrijeme: '14:00'    ,
+    lokacija: 'Paromlinska 3, Sarajevo'  
   }
 ];
 
@@ -63,11 +62,12 @@ const useStyles = makeStyles(() => ({
     borderRadius: '15px'
   },
   actions: {
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+  
   }
 }));
 
-const ZadnjeRegistrovaniKorisnici = ({ className, ...rest }) => {
+const Obavjestenja = ({ className, ...rest }) => {
   const classes = useStyles();
   const [orders] = useState(data);
 
@@ -76,23 +76,26 @@ const ZadnjeRegistrovaniKorisnici = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader title="Zadnje registrovani korisnici" />
+      <CardHeader title="Obavještenja" />
       <Divider />
         <Box minWidth={800}>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>
-                  <h1>Ime i prezime</h1>
+                  <h1>Naziv</h1>
                 </TableCell>
                 <TableCell>
-                <h1>Kontakt telefon</h1>
+                <h1>Datum</h1>
                 </TableCell>
                 <TableCell>
-                <h1>Krvna grupa</h1>
+                <h1>Vrijeme</h1>
                 </TableCell>
                 <TableCell>
-                <h1>Detalji</h1>
+                <h1>Lokacija</h1>
+                </TableCell>
+                <TableCell>
+            
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -103,16 +106,19 @@ const ZadnjeRegistrovaniKorisnici = ({ className, ...rest }) => {
                   key={order.id}
                 >
                   <TableCell>
-                    {order.imePrezime}
+                    {order.naziv}
                   </TableCell>
                   <TableCell>
-                    {order.telefon}
+                    {order.datum}
                   </TableCell>
                   <TableCell>
-                    {order.krvnaGrupa}
+                    {order.vrijeme}
                   </TableCell>
                   <TableCell>
-                      <Button size="medium" color="secondary" variant="outlined">Prikaži  </Button>
+                    {order.lokacija}
+                  </TableCell>
+                  <TableCell>
+                      <Button size="medium" color="secondary" variant="outlined">Detalji</Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -123,8 +129,8 @@ const ZadnjeRegistrovaniKorisnici = ({ className, ...rest }) => {
   );
 };
 
-ZadnjeRegistrovaniKorisnici.propTypes = {
+Obavjestenja.propTypes = {
   className: PropTypes.string
 };
 
-export default ZadnjeRegistrovaniKorisnici;
+export default Obavjestenja;

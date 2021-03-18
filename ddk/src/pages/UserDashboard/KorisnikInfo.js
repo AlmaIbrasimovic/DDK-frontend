@@ -9,17 +9,19 @@ import { Container,Grid,Avatar} from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/People';
 import CardMedia from '@material-ui/core/CardMedia';
 import ButtonBase from '@material-ui/core/ButtonBase';
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-    backgroundColor: '#e53935',
-    color:'white',
+    backgroundColor: 'white',
+    color:'black',
     borderRadius: '15px'
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: 'white'
+    color: 'black'
+   
   },
   cover: {
     width: 151,
@@ -28,17 +30,14 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   image: {
-    width: 128,
-    height: 128,
-    paddingTop: '25%',
-    marginLeft: '40%'
+    width: 220,
+    height: 180,
+    marginLeft: '10%'
   }
 });
 
-export default function SimpleCard() {
+export default function KorisnikInfo() {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
   return (
     <Card className={classes.root}>
       <Container maxWidth={false}>
@@ -46,7 +45,6 @@ export default function SimpleCard() {
           container
           spacing={3}
         >
-          
           <Grid
             item
             lg={6}
@@ -56,12 +54,25 @@ export default function SimpleCard() {
             xs={6}
           >
             <CardContent>
-              <Typography className={classes.title} color="textSecondary" gutterBottom>
-                UKUPNO DONORA
+              <Typography className={classes.title}  gutterBottom>
+                Alma Ibrašimović
               </Typography>
-              <Typography variant="h4" component="h2">
-                128
-              </Typography>              
+              <Typography variant="h5">
+                <b>Datum rođenja: </b>23.10.1996.
+              </Typography>    
+              <Typography variant="h5">
+                <b>Spol: </b>Žensko
+              </Typography>
+              <Typography variant="h5">
+                <b>Krvna grupa:</b> 0+
+              </Typography>
+              <Typography variant="h5">
+                <b>Posljednje darivanje:</b> 05.02.2021.
+              </Typography>   
+    
+              <Typography variant="h5">
+                <b>Sljedeće darivanje:</b> 05.06.2021.
+              </Typography>       
             </CardContent>
           </Grid>
           <Grid
@@ -74,23 +85,12 @@ export default function SimpleCard() {
             mx="auto"
           >
           <CardActions>
-          <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src="/static/images/grupe.png" />
+           <ButtonBase className={classes.image}>
+              <img className={classes.image} alt="complex" src="/static/images/bloodDonorHero.png" />
             </ButtonBase>
           </CardActions>
           </Grid>  
-          <Grid
-            item
-            lg={12}
-            md={12}
-            sm={12}
-            xl={3}
-            xs={12}
-          >
-            <CardActions>
-            <Button size="large"  variant="contained">Prikaži</Button>
-            </CardActions>
-          </Grid>  
+          
         </Grid>
       </Container>
     </Card>

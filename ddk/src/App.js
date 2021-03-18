@@ -26,6 +26,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import GlobalStyles from './components/GlobalStyles';
 import theme from './theme';
 import { ThemeProvider } from '@material-ui/core';
+import UserProfile from './pages/UserDashboard'
 function App() {
   return (
    <Router>
@@ -40,7 +41,7 @@ function App() {
        <Route path='/rjecnik' exact component={Rjecnik} />
        <Route path='/kako-pomaze' exact component={KakoPomaze} />
        <Route path='/proces-darivanja' exact component={ProcesDarivanja} />
-       <Route path='/faq' exact component={faq} />      
+             
        <Route path='/zasto-darovati' exact component={ZastoDarovati} />
        <Route path='/a-pozitivna' exact component={Apozitivna} />
        <Route path='/a-negativna' exact component={Aneg} />
@@ -50,9 +51,12 @@ function App() {
        <Route path='/ab-negativna' exact component={ABneg} />
        <Route path='/nula-pozitivna' exact component={nulaPos} />
        <Route path='/nula-negativna' exact component={nulaNeg} />
+       
+
        <ThemeProvider theme={theme}>
           <GlobalStyles />
             <Route path='/vodic' exact component={Dashboard} />
+            <Route path='/faq' exact component={UserProfile} />
         </ThemeProvider>
       </Switch>
    </Router>
