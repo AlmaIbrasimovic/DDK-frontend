@@ -115,7 +115,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           {user.imePrezime}
         </Typography>
         
-        <Button  variant="outlined">Uredi profil</Button>
+        <Button  variant="outlined" size = "medium" color="secondary">Uredi profil</Button>
       </Box>
       <Divider />
       <Box p={2}>

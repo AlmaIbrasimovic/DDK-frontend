@@ -8,6 +8,8 @@ import Page from '../../components/Page';
 import Obavjestenja from './Obavjestenja';
 import Sidebar from '../UserSidebar'
 import KorisnikInfo from './KorisnikInfo'
+import Priznanja from './Priznanja'
+import BrojDarivanja from './BrojDarivanja'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,16 +55,25 @@ const UserDashboard = () => {
             xl={3}
             xs={12}
           >
-            <KorisnikInfo />
+            <BrojDarivanja />
           </Grid>  
           <Grid
             item
-            lg={12}
+            lg={6}
             md={12}
             xl={9}
             xs={12}
           >
             <Obavjestenja />
+          </Grid>
+          <Grid
+            item
+            lg={6}
+            md={12}
+            xl={9}
+            xs={12}
+          >
+             <Priznanja />
           </Grid>
         </Grid>
       </Container>

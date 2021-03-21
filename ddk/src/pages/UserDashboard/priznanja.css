@@ -1,0 +1,24 @@
+.CircularProgressbar-path {
+    stroke: #e53935 !important;
+  }
+  .CircularProgressbar-trail {
+    stroke: gray;
+  }
+  .CircularProgressbar-text {
+    fill: #e53935 !important;
+  }
+  .CircularProgressbar-background {
+    fill: green;
+  }
+
+.progress-div {
+    margin-top: 10%;
+    margin: 0 auto;
+    padding-top: 5%;
+    padding-bottom: 10%;
+}
+
+.progress-div p {
+  padding-bottom: 6%;
+  padding-top: 10%;
+}

@@ -6,8 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Container,Grid,Avatar} from '@material-ui/core';
-import PeopleIcon from '@material-ui/icons/People';
-import CardMedia from '@material-ui/core/CardMedia';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 const useStyles = makeStyles({
@@ -23,6 +21,11 @@ const useStyles = makeStyles({
     color: 'black'
    
   },
+  number: {
+    fontSize: 50,
+    fontWeight:'normal',
+    color: 'black'   
+  },
   cover: {
     width: 151,
   },
@@ -31,13 +34,16 @@ const useStyles = makeStyles({
   },
   image: {
     width: 220,
-    height: 150,
-    marginLeft: '10%',
-    marginTop: '8%'
+    height: 200,
+    marginLeft: '6%',
+
+  },
+  buttonHistorija: {
+    marginTop: '13.5%'
   }
 });
 
-export default function KorisnikInfo() {
+export default function BrojDarivanja() {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -56,23 +62,12 @@ export default function KorisnikInfo() {
           >
             <CardContent>
               <Typography className={classes.title}  gutterBottom>
-                Podaci o darivatelju
+                Broj darivanja
               </Typography>
-              <Typography variant="h5">
-                <b>Datum rođenja: </b>23.10.1996.
+              <Typography className = {classes.number} ariant="h5">
+                8
               </Typography>    
-              <Typography variant="h5">
-                <b>Spol: </b>Žensko
-              </Typography>
-              <Typography variant="h5">
-                <b>Krvna grupa:</b> 0+
-              </Typography>
-              <Typography variant="h5">
-                <b>Posljednje darivanje:</b> 05.02.2021.
-              </Typography>   
-              <Typography variant="h5">
-                <b>Sljedeće darivanje:</b> 05.06.2021.
-              </Typography>       
+              <Button className = {classes.buttonHistorija} variant="outlined" size = "large" color="secondary">Historija darivanja</Button>
             </CardContent>
           </Grid>
           <Grid
@@ -86,11 +81,10 @@ export default function KorisnikInfo() {
           >
           <CardActions>
            <ButtonBase className={classes.image}>
-              <img className={classes.image} alt="complex" src="/static/images/bloodDonorHero.png" />
+              <img className={classes.image} alt="complex" src="/static/images/brojDoniranja.jpg" />
             </ButtonBase>
           </CardActions>
-          </Grid>  
-          
+          </Grid> 
         </Grid>
       </Container>
     </Card>

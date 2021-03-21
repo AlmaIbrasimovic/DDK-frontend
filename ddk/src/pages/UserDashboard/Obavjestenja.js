@@ -78,7 +78,7 @@ const Obavjestenja = ({ className, ...rest }) => {
     >
       <CardHeader title="Obavještenja" />
       <Divider />
-        <Box minWidth={800}>
+        <Box minWidth={650}>
           <Table>
             <TableHead>
               <TableRow>
@@ -117,9 +117,7 @@ const Obavjestenja = ({ className, ...rest }) => {
                   <TableCell>
                     {order.lokacija}
                   </TableCell>
-                  <TableCell>
-                      <Button size="medium" color="secondary" variant="outlined">Detalji</Button>
-                  </TableCell>
+                  
                 </TableRow>
               ))}
             </TableBody>
