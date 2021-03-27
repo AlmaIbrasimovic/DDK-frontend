@@ -22,53 +22,13 @@ import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
 import HomeIcon from '@material-ui/icons/Home';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 const user = {
   avatar: '/static/images/avatars/logo.png',
   title: 'Administrator'
 };
-
-const items = [
-  {
-    href: '/app/dashboard',
-    icon: DashboardIcon,
-    title: 'Dashboard'
-  },
-  {
-    href: '/app/customers',
-    icon: PeopleIcon,
-    title: 'Donori'
-  },
-  {
-    href: '/app/products',
-    icon: BloodGroupsIcon,
-    title: 'Krvne grupe'
-  },
-  {
-    href: '/app/account',
-    icon: NoteAddIcon,
-    title: 'Kreiraj akciju darivanja krvi'
-  },
-  {
-    href: '/app/settings',
-    icon: HomeWorkIcon,
-    title: 'Unesi novi transfuzijski centar'
-  },
-  {
-    href: '/login',
-    icon: AssignmentIcon,
-    title: 'Izvještaji'
-  },
-  {
-    href: '/register',
-    icon: FindInPageIcon,
-    title: 'Pretraži'
-  },
-  {
-    href: '/',
-    icon: HomeIcon,
-    title: 'Početna stranica'
-  }
-];
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
@@ -90,12 +50,12 @@ const useStyles = makeStyles(() => ({
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
-
+  const { t } = useTranslation();
+  
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   const content = (
@@ -125,14 +85,46 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       <Divider />
       <Box p={2}>
         <List>
-          {items.map((item) => (
-            <NavItem
-              href={item.href}
-              key={item.title}
-              title={item.title}
-              icon={item.icon}
-            />
-          ))}
+          <NavItem
+            href = '/app/dashboard'
+            icon = {DashboardIcon}
+            title = 'Dashboard'
+          />
+          <NavItem
+            href = '/app/customers'
+            icon = {PeopleIcon}
+            title = {t('Darivaoci.1')}
+          />
+          <NavItem
+             href = '/app/products'
+             icon = {BloodGroupsIcon}
+             title = 'Krvne grupe'
+          />
+          <NavItem
+            href = '/app/account'
+            icon = {NoteAddIcon}
+            title= {t('Kreiraj akciju darivanja krvi.1')}
+          />
+          <NavItem
+            href = '/app/settings'
+            icon = {HomeWorkIcon}
+            title = 'Unesi novi transfuzijski centar'
+          />
+          <NavItem
+               href = '/login'
+               icon = {AssignmentIcon}
+               title = 'Izvještaji'
+          />
+          <NavItem
+            href = '/register'
+            icon = {FindInPageIcon}
+            title= {t('Pretraži.1')}
+          />
+          <NavItem
+              href = '/'
+              icon= {HomeIcon}
+              title= {t('Početna stranica.1')}
+          />
         </List>
       </Box>
       <Box flexGrow={1} />    

@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import Navbar from '../home-page/Navbar'
 import './krvne-grupe-detalji.css'
 import APoz from '../../assets/img/A+.svg';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
-function aPozitivna () {
+function APozitivna () {
+  const { t } = useTranslation();
   return (
     <>
     <Navbar/>
@@ -26,7 +29,7 @@ function aPozitivna () {
                 <i>Koliko je rijetka A pozitivna krvna grupa?</i>
             </h1>
             <p>
-                1 od 3 donora krvi ima A pozitivnu krvnu grupu. Oko <i>30% darivatelja</i> ima A pozitivnu krv, 
+                1 od 3 {t('darivaoca.1')} krvi ima A pozitivnu krvnu grupu. Oko <i>30% {t('darivaoca.1')}</i> ima A pozitivnu krv, 
                 što je čini drugom po učestalosti krvnom grupom nakon O pozitivne (36%).
             </p>
             <h1>
@@ -58,4 +61,4 @@ function aPozitivna () {
   );
 }
 
-export default aPozitivna;
+export default APozitivna;

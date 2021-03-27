@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Container,Grid,Avatar} from '@material-ui/core';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 const useStyles = makeStyles({
   root: {
@@ -45,6 +47,8 @@ const useStyles = makeStyles({
 
 export default function BrojDarivanja() {
   const classes = useStyles();
+  const { t } = useTranslation();
+
   return (
     <Card className={classes.root}>
       <Container maxWidth={false}>
@@ -62,12 +66,12 @@ export default function BrojDarivanja() {
           >
             <CardContent>
               <Typography className={classes.title}  gutterBottom>
-                Broj darivanja
+                Broj {t('darivanja.1')}
               </Typography>
               <Typography className = {classes.number} ariant="h5">
                 8
               </Typography>    
-              <Button className = {classes.buttonHistorija} variant="outlined" size = "large" color="secondary">Historija darivanja</Button>
+              <Button className = {classes.buttonHistorija} variant="outlined" size = "large" color="secondary">{t('Historija.1')} {t('darivanja.1')}</Button>
             </CardContent>
           </Grid>
           <Grid

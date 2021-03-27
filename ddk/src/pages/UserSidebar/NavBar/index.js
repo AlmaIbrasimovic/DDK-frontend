@@ -24,6 +24,9 @@ import FindInPageIcon from '@material-ui/icons/FindInPage';
 import HistoryIcon from '@material-ui/icons/History';
 import EditIcon from '@material-ui/icons/Edit';
 import HomeIcon from '@material-ui/icons/Home';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 const user = {
   avatar: '/static/images/avatars/logo.png',
   imePrezime: 'Alma Ibrašimović',
@@ -84,6 +87,7 @@ const useStyles = makeStyles(() => ({
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
@@ -120,14 +124,31 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       <Divider />
       <Box p={2}>
         <List>
-          {items.map((item) => (
-            <NavItem
-              href={item.href}
-              key={item.title}
-              title={item.title}
-              icon={item.icon}
-            />
-          ))}
+          <NavItem
+            href = '/app/dashboard'
+            icon = {DashboardIcon}
+            title = 'Dashboard'
+          />
+          <NavItem
+            href = '/app/customers'
+            icon = {BloodGroupsIcon}
+            title = {t('Akcije darivanja krvi.1')}
+          />
+          <NavItem
+             href = '/app/products'
+             icon = {HomeWorkIcon}
+             title = 'Transfuzijski centri'
+          />
+          <NavItem
+            href = '/app/account'
+            icon = {HistoryIcon}
+            title= {t('Historija darivanja krvi.1')}
+          />
+          <NavItem
+            href = '/'
+            icon = {HomeIcon}
+            title = {t('Početna stranica.1')}
+          />
         </List>
       </Box>
       <Box flexGrow={1} />    

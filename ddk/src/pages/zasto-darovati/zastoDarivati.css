@@ -1,13 +1,14 @@
-.krvna-grupa {
+.zasto-darivati {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
     padding-top: 120px;
     border-top: 3.5px solid #E42313;
+    
 }
 
-.krvna-grupa img {
+.zasto-darivati img {
     margin-top: 2%;
     margin-left: -38px;
 }
@@ -22,12 +23,12 @@
 
 }
 
-.blood-type-right {
+.zasto-darivati-right{
     width: 50%;
     height: 633px;
     border-top: 1.5px solid lightgray;
-    border-left: 1.5px solid lightgray;  
-     overflow-y: scroll;
+    border-left: 1.5px solid lightgray;
+    overflow-y: scroll;
 }
 
 .left { 
@@ -35,7 +36,7 @@
     float: left;
 }
 
-.blood-type-right p {
+.zasto-darivati-right p {
     padding:9px;
     font-size: 0.950rem;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -44,7 +45,11 @@
     letter-spacing: 0.01071em;
 }
 
-.blood-type-right h1 {
+.zasto-darivati-right h1 {
     padding: 9px;
     letter-spacing: 0.01071em;
+}
+
+.zadnji-paragraf {
+    margin-top: 50px;
 }

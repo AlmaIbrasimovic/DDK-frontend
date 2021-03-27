@@ -11,26 +11,27 @@ import KakoPomaze from './pages/kako-pomaze/kakoPomaze'
 import HomePage from './pages/home-page/HomePage'
 import faq from './pages/faq/faq'
 import Vodic from './pages/vodic/vodic'
-import ZastoDarovati from './pages/zasto-darovati/zastoDarivati'
-import ProcesDarivanja from './pages/proces-darivanja/procesDarivanja'
-import Apozitivna from './pages/krvne-grupe/aPozitivna'
-import Aneg from './pages/krvne-grupe/aNegativna'
+import ZastoDarovati from './pages/zasto-darovati/ZastoDarivati'
+import ProcesDarivanja from './pages/proces-darivanja/ProcesDarivanja'
+import Apozitivna from './pages/krvne-grupe/APozitivna'
+import Aneg from './pages/krvne-grupe/ANegativna'
 import Dashboard from './pages/DashboardView'
-import Bpos from './pages/krvne-grupe/bPozitivna'
-import Bneg from './pages/krvne-grupe/bNegativna'
-import ABpos from './pages/krvne-grupe/abPozitivna'
-import ABneg from './pages/krvne-grupe/abNegativna'
-import nulaPos from './pages/krvne-grupe/nulaPozitivna'
-import nulaNeg from './pages/krvne-grupe/nulaNegativna'
+import Bpos from './pages/krvne-grupe/BPozitivna'
+import Bneg from './pages/krvne-grupe/BNegativna'
+import ABpos from './pages/krvne-grupe/ABPozitivna'
+import ABneg from './pages/krvne-grupe/ABNegativna'
+import nulaPos from './pages/krvne-grupe/NulaPozitivna'
+import nulaNeg from './pages/krvne-grupe/NulaNegativna'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import GlobalStyles from './components/GlobalStyles';
 import theme from './theme';
 import { ThemeProvider } from '@material-ui/core';
 import UserProfile from './pages/UserDashboard'
+
 function App() {
+
   return (
-   <Router>
- 
+   <Router> 
      <Switch>
        <Route path='/' exact component={HomePage} />
        <Route path='/akcije-darivanja' exact component={AkcijeDarivanja} />

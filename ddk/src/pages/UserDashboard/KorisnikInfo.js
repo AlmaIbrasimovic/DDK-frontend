@@ -9,6 +9,8 @@ import { Container,Grid,Avatar} from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/People';
 import CardMedia from '@material-ui/core/CardMedia';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 const useStyles = makeStyles({
   root: {
@@ -39,6 +41,8 @@ const useStyles = makeStyles({
 
 export default function KorisnikInfo() {
   const classes = useStyles();
+  const { t } = useTranslation();
+
   return (
     <Card className={classes.root}>
       <Container maxWidth={false}>
@@ -56,7 +60,7 @@ export default function KorisnikInfo() {
           >
             <CardContent>
               <Typography className={classes.title}  gutterBottom>
-                Podaci o darivatelju
+                Podaci o {t('darivaocu.1')}
               </Typography>
               <Typography variant="h5">
                 <b>Datum rođenja: </b>23.10.1996.
@@ -68,10 +72,10 @@ export default function KorisnikInfo() {
                 <b>Krvna grupa:</b> 0+
               </Typography>
               <Typography variant="h5">
-                <b>Posljednje darivanje:</b> 05.02.2021.
+                <b>Posljednje {t('darivanje.1')} krvi:</b> 05.02.2021.
               </Typography>   
               <Typography variant="h5">
-                <b>Sljedeće darivanje:</b> 05.06.2021.
+                <b>Sljedeće {t('darivanje.1')} krvi</b> 05.06.2021.
               </Typography>       
             </CardContent>
           </Grid>

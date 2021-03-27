@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import Navbar from '../home-page/Navbar'
 import './krvne-grupe-detalji.css'
 import Grupa from '../../assets/img/B+.svg';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
-function bPozitivna () {
+function BPozitivna () {
+  const { t } = useTranslation();
   return (
     <>
     <Navbar/>
@@ -22,7 +25,7 @@ function bPozitivna () {
                 <i>Koliko je rijetka B pozitivna krvna grupa?</i>
             </h1>
             <p>
-                1 od 13 donora krvi ima B pozitivnu krvnu grupu, što znači da oko <i>8% darivatelja</i> ima B pozitivnu krv. Sveukupno,
+                1 od 13 {t('darivaoca.1')} krvi ima B pozitivnu krvnu grupu, što znači da oko <i>8% {t('darivaoca.1')}</i> ima B pozitivnu krv. Sveukupno,
                 oko 10% svjetske populacije ima B krvnu grupu, što je čini jednom od najrjeđe krvne grupe.
             </p>
             <h1>
@@ -54,4 +57,4 @@ function bPozitivna () {
   );
 }
 
-export default bPozitivna;
+export default BPozitivna;

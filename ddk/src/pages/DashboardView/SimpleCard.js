@@ -9,6 +9,9 @@ import { Container,Grid,Avatar} from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/People';
 import CardMedia from '@material-ui/core/CardMedia';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -38,6 +41,7 @@ const useStyles = makeStyles({
 export default function SimpleCard() {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
+  const { t } = useTranslation();
 
   return (
     <Card className={classes.root}>
@@ -57,7 +61,7 @@ export default function SimpleCard() {
           >
             <CardContent>
               <Typography className={classes.title} color="textSecondary" gutterBottom>
-                UKUPNO DONORA
+                UKUPNO {t('DARIVALACA.1')}
               </Typography>
               <Typography variant="h4" component="h2">
                 128
