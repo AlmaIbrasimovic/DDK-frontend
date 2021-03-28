@@ -1,0 +1,15 @@
+.button.is-ghost {
+    background: none;  
+    color: white;
+    text-decoration: none
+}
+
+.button.is-ghost:hover{
+    color:white;
+    border-color: none;
+}
+.button.is-ghost:focus{
+    color:white;
+    border-color: none;
+}
+

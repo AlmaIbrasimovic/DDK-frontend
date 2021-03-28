@@ -66,7 +66,7 @@ const useStyles = makeStyles(() => ({
     width: 300
   },
   desktopDrawer: {
-    width: '256',
+    width: 256,
     top: 64,
     height: 'calc(100% - 64px)'
   },
@@ -130,7 +130,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
             title = 'Dashboard'
           />
           <NavItem
-            href = '/app/customers'
+            href = '/akcije-darivanja'
             icon = {BloodGroupsIcon}
             title = {t('Akcije darivanja krvi.1')}
           />

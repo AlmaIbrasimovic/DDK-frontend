@@ -5,7 +5,7 @@ import AkcijeDarivanja from './pages/akcije-darivanja/AkcijeDarivanja';
 import TransfuzijskiCentri from './pages/transfuzijski-centri/TransfuzijskiCentri'
 import Login from './pages/login/login'
 import KrvneGrupe from './pages/krvne-grupe/krvneGrupe'
-import Rjecnik from './pages/rjecnik/rjecnik'
+import Rjecnik from './pages/rjecnik/Rjecnik'
 import KreirajRacun from './pages/kreiraj-racun/KreirajRacun'
 import KakoPomaze from './pages/kako-pomaze/kakoPomaze'
 import HomePage from './pages/home-page/HomePage'

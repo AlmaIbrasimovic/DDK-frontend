@@ -1,0 +1,210 @@
+[
+    {
+      "title": "Alogenično",
+      "sadrzaj": "Darovana krv koja je data drugoj osobi, a u ABO i Rh sistemu su podudarne, također se koristi i termin homologna krv."
+    },
+    {
+      "title": "Aloimunizacija",
+      "sadrzaj": "Proces koji dovodi do stvaranja antitijela na strane antigene."
+    },
+    {
+      "title": "Antitijela",
+      "sadrzaj": "Proteini koji reaguju sa antigenima na eritrocitima i mogu razoriti transfundirane ćelije."
+    },
+    {
+      "title": "Antikoagulant",
+      "sadrzaj": "Supstanca koja spriječava zgrušavanje krvi"
+    },
+    {
+      "title": "Antigen",
+      "sadrzaj": "Supstanca na površini eritrocita koja izaziva imunološki odgovor kada je transfudirana krv u pacijenta koji nema taj antigen."
+    },
+    {
+      "title": "Afereza",
+      "sadrzaj": "Procedura gdje se puna krv izdvaja iz organizma, zatim se iz izdvojene pune krvi izdvaja neka od komponenata krvi a ostatak krvi se vraća u organizam."
+    },
+    {
+      "title": "Aplastična anemija",
+      "sadrzaj": "Anemija prouzrokovana nedostatkom krvnih ćelija radi loše produkcije koštane srži."
+    },
+    {
+      "title": "Autoimuno",
+      "sadrzaj": "Proces koji čine antitijela protiv vlastitog organizma."
+    },
+    {
+      "title": "Bolest okruglih ćelija",
+      "sadrzaj": "Oboljenje kod kojeg usljed abnormalnosti hemoglobina dolazi do promjene oblika eritrocita."
+    },
+    {
+      "title": "Crvene krvne ćelije (eritrociti)",
+      "sadrzaj": "Crvene krvne ćelije transportuju kisik u organizmu prema tjelesnim ćelijama a transportuju ugljični dioksid od ćelija do pluća. U sebi sadrže hemoglobin"
+    },
+    {
+      "title": "Darivanje",
+      "sadrzaj": "Darivanje krvi i/ili (krvnih komponenti)"
+    },
+    {
+      "title": "Diluciona koagulopatija",
+      "sadrzaj": "Često se viđa kod višekratno transfundiranih pacijenata. Transfuzije razrijeđuju trombocite i faktore koagulacije što može podpomoći krvarenje. Takvi pacijenti trebaju transfuzije trombocita i plazme"
+    },
+    {
+      "title": "Engrafment",
+      "sadrzaj": "Proces u kojem transplantirane ili transfundirane ćelije (npr. poslije transplantacije koštane srži) počinju rasti i reprodukovati se u primaoc"
+    },
+    {
+      "title": "Eritrocitofereza",
+      "sadrzaj": "Procedura afereze prilikom koje se skupljaju eritrociti"
+    },
+    {
+      "title": "Ekstrakorporalno",
+      "sadrzaj": "Krv cirkulira izvan tijela, npr.u mašini za aferezu tokom doniranja"
+    },
+    {
+      "title": "Factor XIII / Faktor XIII",
+      "sadrzaj": "Faktor koagulacije koji stabilizira krvni ugrušak"
+    },
+    {
+      "title": "Faktor VIII-Krioprecipitat bogat F VIII",
+      "sadrzaj": "Sadržava faktor zgrušavanja (F VIII) koji kontrolira zgrušavanje krvi kod hemofilije(hemofilija A)"
+    },
+    {
+      "title": "Fibrinogen",
+      "sadrzaj": "Protein (nalazi se u plazmi) učestvuje u procesu zgrušavanja"
+    },
+    {
+      "title": "Graft-versus-host disease (GVHD)",
+      "sadrzaj": "Reakcija gdje transplantirane ili transfudirane ćelije napadaju ćelije primatelja"
+    },
+    {
+      "title": "Granulociti",
+      "sadrzaj": "Tip bijelih krvnih ćelija (leukociti) koje napadaju i uništavaju organizmu strane substance"
+    },{
+      "title": "Hematokrit",
+      "sadrzaj": "Procenat crvenih krvnih ćelija (eritrociti) u krvi"
+    },
+    {
+      "title": "Hematološki",
+      "sadrzaj": "Vezano za krv"
+    },
+    {
+      "title": "Hematlog",
+      "sadrzaj": "Subspecijalista za krv i krvotvorne organe"
+    },
+    {
+      "title": "Hematopoeza",
+      "sadrzaj": "Proizvodnja i razvoj krvnih ćelija"
+    },
+    {
+      "title": "Hemoglobin",
+      "sadrzaj": "Substanca koja se nalazi u crvenim krvnim ćelijama (eritrociti), sadrži željezo na koje se u plućima veže kiseonik koje će se isporučiti tkivima. Zbog hemoglobina je krv crvene boje"
+    },
+    {
+      "title": "Hemostaza",
+      "sadrzaj": "Proces zgrušavanja krvi"
+    },
+    {
+      "title": "Hipoksemia",
+      "sadrzaj": "Nizak nivo kisika u krvi"
+    },
+    {
+      "title": "Idiopatska trombocitopenična purpura (ITP)",
+      "sadrzaj": "Autoimuno oboljenje gdje organizam proizvodi antitijela protiv vlastitih trombocita"
+    },
+    {
+      "title": "Imunoglobin alfa (IgA)",
+      "sadrzaj": "Tip imunoglobina prisutan u krvi i tjelesnim sekretima koji pomažu uborbi protiv infekcija"
+    },
+    {
+      "title": "Imunosupresija",
+      "sadrzaj": "Stanje sniženog imuniteta prizvedeno bolešću i/ili lijekovima kada je organizam prijemčiviji (pogodniji) za infektivna oboljenja"
+    },
+    {
+      "title": "Koštana srž",
+      "sadrzaj": "Mehko tkivo koje se nalazi u šupljinama kostiju i koje je odgovorno za produkciju krvnih ćelija i trombocita"
+    },
+    {
+      "title": "Komponenta (krvna)",
+      "sadrzaj": "Dio krvi. Krv se sastoji iz različitih dijelova odnosno komponenti kao što su: eritrociti, plazma, trombociti i više tipova bijelih krvnih ćelija. Svaka komponenta ima svoj vlastiti zadatak koji obavlja u organizmu. Možemo razdvojiti krv u komponente tako da svaki pacijent dobije onaj dio koji mu je potreban"
+    },
+    {
+      "title": "Krvna grupa",
+      "sadrzaj": "Svačija spada u jednu od 4. krvne grupe: A, B, AB ili O. Grupa zavisi od prisustva ili odsustva određenih supstanci na eritrocitima. Krvna grupa se nasljeđuje"
+    },
+    {
+      "title": "Križna proba",
+      "sadrzaj": "Laboratorijski test kojim se određuje podudarnost između krvi pacijenta i krvi DK"
+    },
+    {
+      "title": "Krvni produkt sa smanjenim brojem leukocita",
+      "sadrzaj": "Spriječava transfuzijsku reakciju i umanjuje mogućnost prenosa infekcije"
+    },
+    {
+      "title": "Leukociti",
+      "sadrzaj": "Bijele krvne ćelije"
+    },
+    {
+      "title": "Leukoreducirano (smanjen broj leukocita)",
+      "sadrzaj": "Postupak smanjivanja broja leukocita u krvnim produktima da bi se na taj način spriječile transfuzijske reakcije, aloimunizacija i slično"
+    },
+    {
+      "title": "Limfociti",
+      "sadrzaj": "Vrsta bijeli krvnih ćelija (leukociti) koje čuvaju i prenose informacije i proizvode antitijela (bitni dio imunog sistema)"
+    },
+    {
+      "title": "Ljudski serum albumin",
+      "sadrzaj": "Protein u krvnoj plazmi koji pomaže organizmu u održavanju krvnog pritiska"
+    },
+    {
+      "title": "Nehemolitička",
+      "sadrzaj": "Posttransfuzijska reakcija u kojoj ne dolazi do razaranja eritrocita"
+    },
+      {
+        "title": "Ozračena crvene krvne ćelije (eritrociti)",
+        "sadrzaj": "Ozračene crvene krvne ćelije (eritrociti) da bi se inaktivirale sve ćelije sa jezgrom I tako spriječilo graft-versus-host oboljenje"
+      },
+      {
+        "title": "Perioperativna autologna transfuzija (PAT)",
+        "sadrzaj": "Uzimanje istekle krvi tokom operativnog zahvata, njeno pranje i ponovno vraćanje u organizam"
+      },
+      {
+        "title": "Plazma",
+        "sadrzaj": "Plazma je tečni dio krvi, saastoji se od: 92% voda, 7% protein i 1% minerali. U medicini plazma je izvor gama globulina, albumina i faktora zgrušavanja. Često se koristi u tretiranju koagulacionih poremećaja i liječenju opekotina"
+      },
+      {
+        "title": "Rh (Rezus faktor)",
+        "sadrzaj": "Nasljeđena krvna grupa na eritrocitima, determinisana sa parom alelomorfnih gena.Oko 85% ljudi posjeduje Rh faktor i oni su Rh pozitivni, oni koji ga ne posjeduju su Rh negativni"
+      },
+      {
+        "title": "Skupljanje matičnih ćelija iz periferne krvi",
+        "sadrzaj": "Prikupljanje, konzerviranje-zamrzavanje matičnih ćelija dobijenih iz periferne krvi ili koštane srži te ponovno vraćanje iste u organizam da bi se obnovila hematopoeza u organizmu ( u suštini transplantacija matičnih ćelija)"
+      },
+      {
+        "title": "Terapeutska afereza",
+        "sadrzaj": "Terapetski postupak afereze u kojem se neka komponenta krvi odstranjuje i/ili nadomješta drugom zdravom komponentom krvi"
+      },
+      {
+        "title": "Transfuzija",
+        "sadrzaj": "Zamjena ili nadomještanje pune krvi ili krvnih komponenata drugim ili istim komponentama"
+      },
+      {
+        "title": "Trombocitopenia",
+        "sadrzaj": "Snižen nivo broja trombocita u krvi"
+      },
+      {
+        "title": "Trombotična  trombocitopenična purpura (TTP)",
+        "sadrzaj": "Oboljenje u kojem su eritrociti i trombociti uništeni i gdje organizam masivno proizvodi krvne ugruške koji mogu oštetiti bubrege i nervni sistem"
+      },
+      {
+        "title": "Bijele krvne ćelije (leukociti)",
+        "sadrzaj": "Zaštitne krvne ćelije u krvotoku. One napadaju bakterije tako što prolaze kroz zidove kapilara da bi došli do zone infekcije"
+      },
+      {
+        "title": "Trombafereza",
+        "sadrzaj": "Procedura afereze u kojoj se prikupljaju trombociti"
+      },
+      {
+        "title": "Trombociti",
+        "sadrzaj": "Bezbojne krvne pločice koje spriječavaju krvarenje. Može se pojaviti značajan i ozbiljan manjak istih u organizmu tokom liječenja malignih bolesti i/ili napredovanjem samog malignog procesa"
+      }
+  ]
+

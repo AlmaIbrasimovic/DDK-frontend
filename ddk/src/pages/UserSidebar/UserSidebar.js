@@ -9,11 +9,15 @@ import {
   Hidden,
   IconButton,
   Toolbar,
+
   makeStyles
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
-import InputIcon from '@material-ui/icons/Input';
+import LogOut from '@material-ui/icons/Input';
+import './UserSidebar.css';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -26,13 +30,27 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TopBar = ({
+const UserSidebar = ({
   className,
   onMobileNavOpen,
   ...rest
 }) => {
+  
   const classes = useStyles();
   const [notifications] = useState([]);
+  function handleClickLanguage(lang) {
+    i18next.changeLanguage(lang)
+    if(i18next.language == "bos") {
+      console.log("tusaahe")
+      document.getElementById("button-bos").style.textDecoration = "underline";
+      document.getElementById("button-hrv").style.textDecoration = "none";
+    } 
+    else if (i18next.language == "hr") {
+      console.log("tuhe")
+      document.getElementById("button-bos").style.textDecoration = "none";
+      document.getElementById("button-hrv").style.textDecoration = "underline";
+    }
+  }
 
   return (
     <AppBar
@@ -42,9 +60,10 @@ const TopBar = ({
     >
       <Toolbar>
         <RouterLink to="/">
-       
         </RouterLink>
         <Box flexGrow={1} />
+          <button id = "button-bos" onClick={()=>handleClickLanguage('bos')} class="button is-ghost">Bosanski</button>
+          <button id = "button-hrv" onClick={()=>handleClickLanguage('hr')} class="button is-ghost">Hrvatski</button>
         <Hidden mdDown>
           <IconButton color="inherit">
             <Badge
@@ -56,7 +75,7 @@ const TopBar = ({
             </Badge>
           </IconButton>
           <IconButton color="inherit">
-            <InputIcon />
+            <LogOut />
           </IconButton>
         </Hidden>
         <Hidden lgUp>
@@ -72,9 +91,9 @@ const TopBar = ({
   );
 };
 
-TopBar.propTypes = {
+UserSidebar.propTypes = {
   className: PropTypes.string,
   onMobileNavOpen: PropTypes.func
 };
 
-export default TopBar;
+export default UserSidebar;
