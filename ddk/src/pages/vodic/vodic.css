@@ -1,0 +1,63 @@
+.proces-darivanja {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    padding-top: 120px;
+    border-top: 3.5px solid #E42313;
+    
+}
+
+
+
+.title-blood-type-grupa {
+    color: #E42313;
+    font-weight: bold;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 8px;
+
+}
+
+.proces-darivanja-right{
+    width: 50%;
+    height: 633px;
+    border-top: 1.5px solid lightgray;
+    border-left: 1.5px solid lightgray;
+    overflow-y: scroll;
+}
+
+.left { 
+    width: 50%;
+    float: left;
+}
+
+.proces-darivanja-right p {
+    padding:9px;
+    padding-left:19px;
+    font-size: 0.950rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+}
+
+.proces-darivanja-right h1 {
+    padding: 9px;
+    padding-left:19px;
+    letter-spacing: 0.01071em;
+}
+
+.zadnji-paragraf {
+    margin-top: 40px;
+}
+
+.proces-darivanja-right li {
+    color:#4A4A4A;
+    font-size: 0.950rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 550;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+}

@@ -26,6 +26,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import HomeIcon from '@material-ui/icons/Home';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import Modal from "react-bootstrap/Modal";
+import AccountProfileDetails from '../../../components/account/AccountProfileDetails'
+import './navBar.css'
+
 
 const user = {
   avatar: '/static/images/avatars/logo.png',
@@ -84,16 +88,42 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+
+
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
   const { t } = useTranslation();
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [timer, setTimer] = React.useState(0);
+  const [startTime, setStartTime] = React.useState(0);
+  const [endTime, setEndTime] = React.useState(0);
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+
+  const showModal = () => {
+    document.getElementById("urediProfilModal").classList.toggle('is-active')
+  };
+
+  const closeModal = () => {
+    document.getElementById("urediProfilModal").classList.toggle('is-active')
+  };
+
+  const hideModal = () => {
+    setIsOpen(false);
+    
+  };
+  const startTimer = () => {
+    setStartTime(Date.now());
+  };
+
+  const modalLoaded = () => {
+    setEndTime(Date.now());
+  };
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   const content = (
@@ -118,14 +148,13 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         >
           {user.imePrezime}
         </Typography>
-        
-        <Button  variant="outlined" size = "medium" color="secondary">Uredi profil</Button>
+        <Button  variant="outlined" size = "medium" color="secondary" onClick={showModal}>Uredi profil</Button>
       </Box>
       <Divider />
       <Box p={2}>
         <List>
           <NavItem
-            href = '/app/dashboard'
+            href = '/user'
             icon = {DashboardIcon}
             title = 'Dashboard'
           />
@@ -135,7 +164,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
             title = {t('Akcije darivanja krvi.1')}
           />
           <NavItem
-             href = '/app/products'
+             href = '/transfuzijski-centri'
              icon = {HomeWorkIcon}
              title = 'Transfuzijski centri'
           />
@@ -169,6 +198,19 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           {content}
         </Drawer>
       </Hidden>
+      <div id ="urediProfilModal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Uredi profil</p>
+          <button class="delete" aria-label="close" onClick={closeModal}></button>
+        </header>
+        <section class="modal-card-body">
+            <AccountProfileDetails/>
+        </section>
+      
+      </div>
+    </div>
       <Hidden mdDown>
         <Drawer
           anchor="left"
@@ -183,6 +225,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   );
 };
 
+
 NavBar.propTypes = {
   onMobileClose: PropTypes.func,
   openMobile: PropTypes.bool
@@ -192,5 +235,6 @@ NavBar.defaultProps = {
   onMobileClose: () => {},
   openMobile: false
 };
+
 
 export default NavBar;

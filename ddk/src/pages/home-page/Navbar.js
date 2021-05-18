@@ -64,17 +64,22 @@ function Navbar() {
                             <a href = "/proces-darivanja" class="navbar-item">
                                 Proces {t('darivanja.1')} krvi
                             </a>
-                            <a href = "/vodic" class="navbar-item">
-                                Vodič za {t('darivaoce.1')} krvi
-                            </a>
+                            
                             <a href = "/faq" class="navbar-item">
                                 Česta pitanja o {t('darivanju.1')} krvi
                             </a>
                             <a href = "/rjecnik" class="navbar-item">
                                 Riječnik pojmova
                             </a>
+                            <a href = "/admin" class="navbar-item">
+                                Admin dashboard
+                            </a>
+                            <a href = "/user" class="navbar-item">
+                                User profile
+                            </a>
                         </div>
                     </div>
+                    
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link" id="languageDropdown" onClick={languageClick}>
                             Odaberite jezik

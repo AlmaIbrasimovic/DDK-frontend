@@ -9,8 +9,8 @@ import Rjecnik from './pages/rjecnik/Rjecnik'
 import KreirajRacun from './pages/kreiraj-racun/KreirajRacun'
 import KakoPomaze from './pages/kako-pomaze/kakoPomaze'
 import HomePage from './pages/home-page/HomePage'
-import faq from './pages/faq/faq'
-import Vodic from './pages/vodic/vodic'
+import faq from './pages/faq/FAQ'
+import Vodic from './pages/vodic/Vodic'
 import ZastoDarovati from './pages/zasto-darovati/ZastoDarivati'
 import ProcesDarivanja from './pages/proces-darivanja/ProcesDarivanja'
 import Apozitivna from './pages/krvne-grupe/APozitivna'
@@ -27,7 +27,7 @@ import GlobalStyles from './components/GlobalStyles';
 import theme from './theme';
 import { ThemeProvider } from '@material-ui/core';
 import UserProfile from './pages/UserDashboard'
-
+import Account from './pages/Account'
 function App() {
 
   return (
@@ -42,7 +42,6 @@ function App() {
        <Route path='/rjecnik' exact component={Rjecnik} />
        <Route path='/kako-pomaze' exact component={KakoPomaze} />
        <Route path='/proces-darivanja' exact component={ProcesDarivanja} />
-             
        <Route path='/zasto-darovati' exact component={ZastoDarovati} />
        <Route path='/a-pozitivna' exact component={Apozitivna} />
        <Route path='/a-negativna' exact component={Aneg} />
@@ -52,12 +51,13 @@ function App() {
        <Route path='/ab-negativna' exact component={ABneg} />
        <Route path='/nula-pozitivna' exact component={nulaPos} />
        <Route path='/nula-negativna' exact component={nulaNeg} />
-       
-
+       <Route path='/vodic' exact component={Vodic} />
+       <Route path='/faq' exact component={faq} />
+       <Route path='/app/account' exact component={Account} />
        <ThemeProvider theme={theme}>
           <GlobalStyles />
-            <Route path='/vodic' exact component={Dashboard} />
-            <Route path='/faq' exact component={UserProfile} />
+            <Route path='/admin' exact component={Dashboard} />
+            <Route path='/user' exact component={UserProfile} />
         </ThemeProvider>
       </Switch>
    </Router>
