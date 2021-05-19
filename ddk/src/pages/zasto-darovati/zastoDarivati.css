@@ -5,7 +5,6 @@
     height: 100%;
     padding-top: 120px;
     border-top: 3.5px solid #E42313;
-    
 }
 
 .zasto-darivati img {
@@ -20,7 +19,6 @@
     font-size: 35px;
     text-align: center;
     margin-top: 8px;
-
 }
 
 .zasto-darivati-right{
@@ -52,4 +50,8 @@
 
 .zadnji-paragraf {
     margin-top: 50px;
+}
+
+.referenca {
+    margin-top: 20%;
 }

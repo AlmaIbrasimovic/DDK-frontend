@@ -5,10 +5,7 @@
     height: 100%;
     padding-top: 120px;
     border-top: 3.5px solid #E42313;
-    
 }
-
-
 
 .title-blood-type-grupa {
     color: #E42313;
@@ -29,6 +26,7 @@
 }
 
 .left { 
+    margin-top: 3%;
     width: 50%;
     float: left;
 }
@@ -41,6 +39,11 @@
     font-weight: 500;
     line-height: 1.43;
     letter-spacing: 0.01071em;
+}
+
+.referenca {
+    color: black;
+    font-size: 9px;
 }
 
 .proces-darivanja-right h1 {

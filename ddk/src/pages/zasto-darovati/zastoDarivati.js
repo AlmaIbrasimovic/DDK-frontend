@@ -4,17 +4,30 @@ import './zastoDarivati.css'
 import Grupa from '../../assets/img/zastoDonirati.png';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import Lottie from 'react-lottie';
+import faqAnimation from '../../lotties/zastoDarivati.json'
 
 function ZastoDarivati () {
+  const animationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: faqAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
   const { t } = useTranslation();
   return (
     <>
     <Navbar/>
     <div className = "zasto-darivati">
         <div className = "left">
-            <figure class="image is-5by4">
-                <img src={Grupa}/>
-            </figure>
+          <Lottie 
+            options={animationOptions}
+            height={590}
+            width={550}
+          />          
         </div>
         <div className ="zasto-darivati-right">
             <h1 className = "title-blood-type-grupa">Zašto {t('darivati.1')} krv</h1>
@@ -41,7 +54,7 @@ function ZastoDarivati () {
             <b>Nažalost, 1 od 10 osoba koje čitaju ovo će trebati transfuziju krvi nekad u toku svoga života. 
             Kada dođe taj trenutak, Vi ćete očekivati da krv koja vam je potrebna za liječenje bude i dostupna.</b>
            </p>
-           
+           <p className ="referenca"> <a href='https://lottiefiles.com/38067-questioning' className ="referenca">Animacija preuzeta sa: https://lottiefiles.com/38067-questioning</a></p>
         </div>
       </div>
     </>
