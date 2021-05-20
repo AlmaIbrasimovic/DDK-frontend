@@ -86,7 +86,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       <Box p={2}>
         <List>
           <NavItem
-            href = '/app/dashboard'
+            href = '/admin'
             icon = {DashboardIcon}
             title = 'Dashboard'
           />

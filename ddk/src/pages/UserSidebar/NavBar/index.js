@@ -26,10 +26,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import HomeIcon from '@material-ui/icons/Home';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import Modal from "react-bootstrap/Modal";
 import AccountProfileDetails from '../../../components/account/AccountProfileDetails'
 import './navBar.css'
-
 
 const user = {
   avatar: '/static/images/avatars/logo.png',
@@ -88,36 +86,17 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-
-
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
   const { t } = useTranslation();
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [timer, setTimer] = React.useState(0);
-  const [startTime, setStartTime] = React.useState(0);
-  const [endTime, setEndTime] = React.useState(0);
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
-
+  
   const showModal = () => {
     document.getElementById("urediProfilModal").classList.toggle('is-active')
   };
 
   const closeModal = () => {
     document.getElementById("urediProfilModal").classList.toggle('is-active')
-  };
-
-  const hideModal = () => {
-    setIsOpen(false);
-    
-  };
-  const startTimer = () => {
-    setStartTime(Date.now());
-  };
-
-  const modalLoaded = () => {
-    setEndTime(Date.now());
   };
 
   useEffect(() => {
@@ -207,8 +186,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </header>
         <section class="modal-card-body">
             <AccountProfileDetails/>
-        </section>
-      
+        </section>      
       </div>
     </div>
       <Hidden mdDown>

@@ -19,6 +19,7 @@ import './login.scss'
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import logo from '../../assets/img/logo.png';
+import ZaboravljenaLozinka from '../zaboravljena-lozinka/ZaboravljenaLozinka'
 
 const useStyles = (theme) => ({
     root: {
@@ -101,6 +102,15 @@ export class login extends Component {
         })
     }
 
+    showModal = () => {
+        document.getElementById("zaboravljenaLozinkaModal").classList.toggle('is-active')
+    };
+    
+    closeModal = () => {
+        document.getElementById("zaboravljenaLozinkaModal").classList.toggle('is-active')
+    };
+    
+
     render() {
         const {classes} = this.props;
 
@@ -162,10 +172,23 @@ export class login extends Component {
                                     ),
                                 }}
                             />
+                            <div id ="zaboravljenaLozinkaModal" class="modal">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Zaboravljena lozinka?</p>
+                                    <button class="delete" aria-label="close" onClick={this.closeModal}></button>
+                                    </header>
+                                    <section class="modal-card-body">
+                             
+                                        <ZaboravljenaLozinka/>
+                                    </section>      
+                                </div>
+                            </div>
                             <a href="#" class="button-login">Prijavi se</a>
                             <Grid container className = "login-grid">
                                 <Grid item xs>
-                                    <Link href="#" variant="body2">
+                                    <Link href="#" variant="body2" onClick={this.showModal}>
                                         Zaboravljena lozinka?
                                     </Link>
                                 </Grid>
@@ -176,6 +199,7 @@ export class login extends Component {
                                 </Grid>
                             </Grid>
                         </form>
+                        
                         <a className = "login-a" href='https://www.freepik.com/vectors/technology'>Technology vector created by stories - www.freepik.com</a>
                     </div>
                 </Grid>

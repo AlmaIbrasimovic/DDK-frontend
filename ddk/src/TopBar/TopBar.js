@@ -39,12 +39,10 @@ const TopBar = ({
   function handleClickLanguage(lang) {
     i18next.changeLanguage(lang)
     if(i18next.language == "bos") {
-      console.log("tusaahe")
       document.getElementById("button-bos").style.textDecoration = "underline";
       document.getElementById("button-hrv").style.textDecoration = "none";
     } 
     else if (i18next.language == "hr") {
-      console.log("tuhe")
       document.getElementById("button-bos").style.textDecoration = "none";
       document.getElementById("button-hrv").style.textDecoration = "underline";
     }
