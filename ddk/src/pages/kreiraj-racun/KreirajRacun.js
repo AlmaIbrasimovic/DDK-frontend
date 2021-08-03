@@ -10,7 +10,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import '../../pages/login/login.scss'
 import './kreirajRacun.css'
 import logo from '../../assets/img/logo.png';
+import axios from 'axios'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import DatePicker from "react-datepicker";
+import 'moment-timezone';
+import "react-datepicker/dist/react-datepicker.css";
 
+toast.configure()
 const spolovi = [
   {
     value: 'Musko',
@@ -125,9 +132,10 @@ export default function KreirajRacun() {
   const [spol, setSpol] = React.useState('');
   const [ime, setIme] = React.useState('');
   const [prezime, setPrezime] = React.useState('');
-  const [imeRoditelja, setImeRoditelja] = React.useState('');
+  const [korisnickoIme, setKorisnickoIme] = React.useState('');
   const [krvnaGrupa, setKrvnaGrupa] = React.useState('');
   const [kanton, setKanton] = React.useState('');
+  const [datumRodjenja, setDatumRodjenja] = React.useState('');
   const [mjestoRodjenja, setMjestoRodjenja] = React.useState('');
   const [mjestoPrebivalista, setMjestoPrebivalista] = React.useState('');
   const [adresaPrebivalista, setAdresaPrebivalista] = React.useState('');
@@ -149,8 +157,8 @@ export default function KreirajRacun() {
     setPrezime(event.target.value);
   };
 
-  const handleChangeImeRoditelja = (event) => {
-    setImeRoditelja(event.target.value);
+  const handleChangeKorisnickoIme = (event) => {
+    setKorisnickoIme(event.target.value);
   };
 
   const handleChangeKrvnaGrupa = (event) => {
@@ -193,20 +201,41 @@ export default function KreirajRacun() {
     setZanimanje(event.target.value);
   };
 
+  const handleChangeDatumRodjenja = (event) => {
+    setDatumRodjenja(event.target.value)
+  }
+
   const kreirajRacun = () => {
-    console.log("krvna grupa " + krvnaGrupa)
-    console.log("ime " + ime)
-    console.log("prezime " + prezime)
-    console.log ("ime roditelja" + imeRoditelja)
-    console.log ("mjesto rodjenja " + mjestoRodjenja)
-    console.log ("mjesto prebi " + mjestoPrebivalista)
-    console.log ("adresa preb " + adresaPrebivalista)
-    console.log ("kanton " + kanton)
-    console.log ("telefon " + telefon)
-    console.log ("zanimanje " + zanimanje)
-    console.log ("broj darivanja " + brojDarivanja)
-    console.log ("email " + email)
-    console.log ("lozinka " + lozinka)
+    var danas = new Date(),
+    datumKreiranjaRacuna = danas.getFullYear() + '-' + danas.toLocaleString("en-US", { month: "2-digit" }) + '-' + danas.toLocaleString("en-US", { day : '2-digit'})
+    
+    axios.post('http://localhost:8080/register', {
+        ime: ime,
+        prezime: prezime,
+        korisnickoIme: korisnickoIme,
+        adresaPrebivalista: adresaPrebivalista,
+        brojDarivanjaKrvi: brojDarivanja,
+        datumKreiranjaRacuna: datumKreiranjaRacuna,
+        emailAdresa: email,
+        kantonPrebivalista: kanton,
+        kontaktTelefon: telefon,
+        krvnaGrupa: krvnaGrupa,
+        lozinka: lozinka,
+        mjestoPrebivalista: mjestoPrebivalista,
+        mjestoRodenja: mjestoRodjenja,
+        datumRodenja: datumRodjenja,
+        slatiNotifikacije: false,
+        spol: spol,
+        zanimanje: zanimanje
+
+      }).then(response => {
+        console.log(response.status.toString())
+        if (response.status === 200 || response.status === 201) toast.success('Profil uspješno kreiran!', {position: toast.POSITION.TOP_RIGHT})
+      }).catch(err => {
+        console.log(err.response.data)
+       toast.error(err.response.data.toString(), {position: toast.POSITION.TOP_RIGHT})
+      })
+    
   }
 
   return (
@@ -253,11 +282,11 @@ export default function KreirajRacun() {
                 variant="outlined"
                 required
                 fullWidth
-                id="imeRoditelja"
-                value= {imeRoditelja}
-                onChange={handleChangeImeRoditelja}
-                label="Ime jednog roditelja"
-                name="imeRoditelja"
+                id="korisnickoIme"
+                value= {korisnickoIme}
+                onChange={handleChangeKorisnickoIme}
+                label="Korisničko ime"
+                name="korisnickoIme"
               />
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -278,25 +307,28 @@ export default function KreirajRacun() {
               </TextField>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <TextField
-                autoComplete="fname"
-                name="datumRod"
-                variant="outlined"
-                required
-                fullWidth
-                id="datumRod"
+              
+            <TextField
+                id="datumRodjenja"
                 label="Datum rođenja"
-                autoFocus
-              />
+                type="date"
+                fullWidth
+                variant="outlined"
+                onChange={handleChangeDatumRodjenja}                
+                className={classes.textField}
+                InputLabelProps={{
+                  shrink: true,
+              }}
+            />
             </Grid>
             <Grid item xs={12} sm={4}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="mjestoRod"
+                id="mjestoRodjenja"
                 label="Mjesto rođenja"
-                name="mjestoRod"
+                name="mjestoRodjenja"
                 value={mjestoRodjenja}
                 onChange={handleChangeMjestoRodjenja}
                 autoComplete="lname"
