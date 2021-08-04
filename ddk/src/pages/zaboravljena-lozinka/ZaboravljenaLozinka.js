@@ -14,8 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import EmailIcon from '@material-ui/icons/Email';
 import PasswordIcon from '@material-ui/icons/VpnKey';
-import './login.css'
-import './login.scss'
+import './ZaboravljenaLozinka.css'
+import './ZaboravljenaLozinka.scss'
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import logo from '../../assets/img/logo.png';

@@ -24,6 +24,7 @@ import FindInPageIcon from '@material-ui/icons/FindInPage';
 import HomeIcon from '@material-ui/icons/Home';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import ZaboravljenaLozinka from '../../pages/zaboravljena-lozinka/ZaboravljenaLozinka'
 
 const user = {
   avatar: '/static/images/avatars/logo.png',
@@ -46,6 +47,14 @@ const useStyles = makeStyles(() => ({
   },
   
 }));
+
+const showModal = () => {
+  document.getElementById("zaboravljenaLozinkaModal").classList.toggle('is-active')
+};
+
+const closeModal = () => {
+  document.getElementById("zaboravljenaLozinkaModal").classList.toggle('is-active')
+};
 
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
@@ -101,15 +110,11 @@ const NavBar = ({ onMobileClose, openMobile }) => {
              title = 'Krvne grupe'
           />
           <NavItem
-            href = '/app/account'
+            href = '/app/kreiraj-akciju-darivanja-krvi'
             icon = {NoteAddIcon}
             title= {t('Kreiraj akciju darivanja krvi.1')}
           />
-          <NavItem
-            href = '/app/settings'
-            icon = {HomeWorkIcon}
-            title = 'Unesi novi transfuzijski centar'
-          />
+          
           <NavItem
                href = '/login'
                icon = {AssignmentIcon}

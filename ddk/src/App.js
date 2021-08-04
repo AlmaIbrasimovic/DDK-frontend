@@ -29,6 +29,7 @@ import { ThemeProvider } from '@material-ui/core';
 import UserProfile from './pages/UserDashboard'
 import Account from './pages/Account'
 import ZaboravljenaLozinka from './pages/zaboravljena-lozinka/ZaboravljenaLozinka'
+import KreiranjeAkcijeDarivanja  from './pages/akcije-darivanja/KreiranjeAkcijeDarivanja';
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
        <Route path='/vodic' exact component={Vodic} />
        <Route path='/faq' exact component={faq} />
        <Route path='/app/account' exact component={Account} />
+       <Route path = '/app/kreiraj-akciju-darivanja-krvi' exact component = {KreiranjeAkcijeDarivanja}/>
        <Route path='/zaboravljena-lozinka' exact component={ZaboravljenaLozinka} />
        <ThemeProvider theme={theme}>
           <GlobalStyles />
