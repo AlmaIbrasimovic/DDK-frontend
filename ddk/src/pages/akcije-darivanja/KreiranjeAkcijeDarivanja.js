@@ -1,7 +1,4 @@
 import React, {Component} from 'react'
-import SigninPIC from '../../assets/img/loginP.jpg';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
@@ -14,8 +11,6 @@ import Address from '@material-ui/icons/Home';
 import Time from '@material-ui/icons/Schedule';
 import Typography from '@material-ui/core/Typography';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import EmailIcon from '@material-ui/icons/Email';
-import PasswordIcon from '@material-ui/icons/VpnKey';
 import './KreiranjeAkcijeDarivanja.css'
 import './KreiranjeAkcijeDarivanja.scss'
 import IconButton from '@material-ui/core/IconButton';
@@ -29,17 +24,18 @@ import {toast} from 'react-toastify';
 import TimePicker from 'rc-time-picker';
 import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
-
 import DesktopTimePicker from '@material-ui/lab/DesktopTimePicker';
 import 'rc-time-picker/assets/index.css';
 import moment from "moment";
-toast.configure()
 
+toast.configure()
 const useStyles = (theme) => ({
     root: {
-        height: '100vh',  
+        height: '100%',  
         display: 'flex',
         alignItems: 'center',
+        
+        
     },
    
     paper: {
@@ -49,7 +45,7 @@ const useStyles = (theme) => ({
         alignItems: 'center',
         width:'100%',
         fontSize: '11', 
-        color:'grey'
+        
     },
 
     avatar: {      
@@ -59,10 +55,8 @@ const useStyles = (theme) => ({
     form: {
         width: '90%',
         marginTop: theme.spacing(6),
-    },
 
-    customWidth: {
-        maxWidth: 100,
+        
     }
 });
 
@@ -88,10 +82,11 @@ export class KreiranjeAkcijeDarivanja extends Component {
             kraj: '',
             proba:''
         }
+        this.handleBack = this.handleBack.bind(this); 
     }
 
     kreirajAkcijuDarivanja = () => {
-      
+        console.log(this.state.pocetak)
         axios.post('http://localhost:8080/akcija_darivanja_krvi', {
             naslov: this.state.naslov,
             adresa: this.state.adresa,
@@ -110,8 +105,11 @@ export class KreiranjeAkcijeDarivanja extends Component {
         })
     }
 
+    handleBack() {
+        this.props.history.goBack();
+      }
     handleChange = (e) => {
-        console.log(e.target.value)
+
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -119,15 +117,17 @@ export class KreiranjeAkcijeDarivanja extends Component {
 
     render() {
         const {classes} = this.props;
-
+        
         return (
-            <div className = "kreiraj-racun-div" >
-                <Container maxWidth="md" className={classes.container} alignItems="center" justify="center">
+            <div className = "kreiraj-akciju-div" >
+                <Container maxWidth="md" className={classes.container} alignItems="center" justify="center" overflowY="auto">
                 <CssBaseline />
                 <div className={classes.paper}>
-                    <a href="/" id="bottle" onclick="document.location=this.id+'.html';return false;" >
-                        <img src={logo} class="image is-96x96"/>
-                    </a>
+                    <Lottie 
+                        options={animationOptions}
+                        height={220}
+                        width={220}
+                    />
                 <form className={classes.form}>
                     <Grid container spacing={1} >
                         <Grid item align="center" lg={4} md={4} sm={12}>
@@ -219,18 +219,18 @@ export class KreiranjeAkcijeDarivanja extends Component {
                                 margin='normal'
                                 required
                                 fullWidth
-                                value={this.state.pocetak}
                                 id="pocetak"
                                 label="Početak održavanja akcije"
                                 name="pocetak"
+                                type="time"
+                                value={this.state.pocetak}
                                 onChange={e => this.handleChange(e)}
-                                className={classes.input}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <Time/>
-                                        </InputAdornment>
-                                    ),
+                                className={classes.textField}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                inputProps={{
+                                    step: 300
                                 }}
                             />
                         </Grid>
@@ -240,25 +240,33 @@ export class KreiranjeAkcijeDarivanja extends Component {
                                 margin='normal'
                                 required
                                 fullWidth
-                                value={this.state.kraj}
                                 id="kraj"
                                 label="Kraj održavanja akcije"
                                 name="kraj"
+                                type="time"
+                                value={this.state.kraj}
                                 onChange={e => this.handleChange(e)}
-                                className={classes.input}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <Time/>
-                                        </InputAdornment>
-                                    ),
+                                className={classes.textField}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                inputProps={{
+                                    step: 300
                                 }}
                             />
                         </Grid>
                     </Grid>
-                    <button className="button-login"  onClick={this.kreirajAkcijuDarivanja}>Kreiraj akciju darivanja</button>    
+                    <button className="button-kreiraj-akciju" onClick={this.kreirajAkcijuDarivanja}>Kreiraj akciju darivanja</button>
+                    <div className="navigationButtonsLeft">
+                        <button class="button is-danger is-outlined" onClick={this.handleBack}>
+                            <span class="icon is-small">
+                            <i class="fas fa-backward"></i>
+                            </span>
+                            <span>Nazad</span>
+                        </button>
+                    </div>
+                    
                 </form>
-                <a className = "kreiraj-racun-a" href="https://www.freepik.com/vectors/background">Background vector created by freepik - www.freepik.com</a>
               </div>
             </Container>
             </div>            
