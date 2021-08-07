@@ -60,7 +60,8 @@ const data = [
 
 const useStyles = makeStyles(() => ({
   root: {
-    borderRadius: '15px'
+    borderRadius: '15px',
+    overflowX: 'auto'
   },
   actions: {
     justifyContent: 'flex-end'

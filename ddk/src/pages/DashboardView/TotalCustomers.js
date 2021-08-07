@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
-import SimpleCard from './SimpleCard'
+import SimpleCard from './UkupnoDarivaoca'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,9 +73,7 @@ const TotalCustomers = ({ className, ...rest }) => {
           display="flex"
           alignItems="center"
         >
-           <SimpleCard/>
-          
-          
+          <SimpleCard/>
         </Box>
       </CardContent>
     </Card>

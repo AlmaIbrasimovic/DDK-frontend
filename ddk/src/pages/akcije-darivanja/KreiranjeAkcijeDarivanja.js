@@ -107,7 +107,8 @@ export class KreiranjeAkcijeDarivanja extends Component {
 
     handleBack() {
         this.props.history.goBack();
-      }
+    }
+    
     handleChange = (e) => {
 
         this.setState({

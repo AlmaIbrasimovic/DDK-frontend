@@ -180,7 +180,6 @@ export class login extends Component {
                                     <button class="delete" aria-label="close" onClick={this.closeModal}></button>
                                     </header>
                                     <section class="modal-card-body">
-                             
                                         <ZaboravljenaLozinka/>
                                     </section>      
                                 </div>

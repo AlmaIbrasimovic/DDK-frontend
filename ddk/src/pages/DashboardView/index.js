@@ -8,7 +8,7 @@ import Page from '../../components/Page';
 import ZadnjeRegistrovaniKorisnici from './ZadnjeRegistrovaniKorisnici';
 import TopBar from '../../TopBar'
 import TotalCustomers from './TotalCustomers';
-import SimpleCard from './SimpleCard'
+import UkupnoDarivaoca from './UkupnoDarivaoca'
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -46,7 +46,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <SimpleCard />
+          <UkupnoDarivaoca />
           </Grid>
           <Grid
             item
@@ -56,7 +56,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <SimpleCard />
+          <UkupnoDarivaoca />
           </Grid>  
           <Grid
             item
