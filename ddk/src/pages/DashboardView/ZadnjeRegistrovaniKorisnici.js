@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import moment from 'moment';
 import { v4 as uuid } from 'uuid';
-
+import DarivaociDetalji from '../darivaoci-detalji/DarivaociDetalji'
+import axios from 'axios'
+import {toast} from 'react-toastify';
 import PropTypes from 'prop-types';
 import {
   Box,
@@ -18,45 +20,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 
+toast.configure()
 
-const data = [
-  {
-    id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
-  },
-  {
-    id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
-  },
-  {
-    id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
-  },
-  {
-    id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
-  },
-  {
-    id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
-  },
-  {
-    id: uuid(),
-    imePrezime: 'Alma Ibrašimović',
-    telefon: '061/718-733',
-    krvnaGrupa: '0+'    
-  }
-];
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -70,8 +35,27 @@ const useStyles = makeStyles(() => ({
 
 const ZadnjeRegistrovaniKorisnici = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [orders] = useState(data);
+  const [korisnikID, setKorisnikID] = React.useState([])
+  const [darivaociLista, setDarivaociLista] = React.useState([])
 
+  React.useEffect(() => {
+    axios.get('http://localhost:8080/korisnici/zadnjiRegistrovani', {
+    }).then(response => {
+        setDarivaociLista(response.data);
+    }).catch(err => {
+        toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
+    })
+  }, []);
+
+  const showModal = (id) => {
+    setKorisnikID (id)
+    console.log(korisnikID)
+    document.getElementById("prikaziDetalje").classList.toggle('is-active')
+  };
+
+  const closeModal = () => {
+    document.getElementById("prikaziDetalje").classList.toggle('is-active')
+  };
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -87,37 +71,55 @@ const ZadnjeRegistrovaniKorisnici = ({ className, ...rest }) => {
                   <h1>Ime i prezime</h1>
                 </TableCell>
                 <TableCell>
-                <h1>Kontakt telefon</h1>
+                  <h1>Kontakt telefon</h1>
                 </TableCell>
                 <TableCell>
-                <h1>Krvna grupa</h1>
+                  <h1>Krvna grupa</h1>
                 </TableCell>
                 <TableCell>
-                <h1>Detalji</h1>
+                  <h1>Datum registracije</h1>
                 </TableCell>
+                <TableCell>
+                  <h1>Detalji</h1>
+                </TableCell>                
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map((order) => (
+              {darivaociLista.map((darivaoc) => (
                 <TableRow
                   hover
-                  key={order.id}
+                  key={darivaoc.id}
                 >
                   <TableCell>
-                    {order.imePrezime}
+                    {darivaoc.ime + " " + darivaoc.prezime}
                   </TableCell>
                   <TableCell>
-                    {order.telefon}
+                    {darivaoc.kontaktTelefon}
                   </TableCell>
                   <TableCell>
-                    {order.krvnaGrupa}
+                    {darivaoc.krvnaGrupa}
                   </TableCell>
                   <TableCell>
-                      <Button size="medium" color="secondary" variant="outlined">Prikaži  </Button>
+                    {darivaoc.datumKreiranjaRacuna}
+                  </TableCell>
+                  <TableCell>
+                      <Button size="medium" color="secondary" variant="outlined" onClick={() => showModal(darivaoc.id)}>Prikaži </Button>
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
+              <div id ="prikaziDetalje" class="modal">
+                    <div class="modal-background"></div>
+                        <div class="modal-card">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">Podaci o darivaocu</p>
+                            <button class="delete" aria-label="close" onClick={() => closeModal()}></button>
+                        </header>
+                        <footer class="modal-card-foot">
+                          <DarivaociDetalji korisnikID = {korisnikID}/>
+                        </footer>      
+                    </div>
+                </div>
           </Table>
         </Box>    
     </Card>
