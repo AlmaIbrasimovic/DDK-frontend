@@ -7,8 +7,10 @@ import {
 import Page from '../../components/Page';
 import ZadnjeRegistrovaniKorisnici from './ZadnjeRegistrovaniKorisnici';
 import TopBar from '../../TopBar'
-import TotalCustomers from './TotalCustomers';
 import UkupnoDarivaoca from './UkupnoDarivaoca'
+import Chart from "react-google-charts";
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -37,7 +39,6 @@ const Dashboard = () => {
           container
           spacing={3}
         >
-          
           <Grid
             item
             lg={6}
@@ -56,7 +57,32 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-          <UkupnoDarivaoca />
+          <Chart              
+              height={'225px'}
+              chartType="Bar"
+              loader={<div>Loading Chart</div>}
+              data={[
+                ['Mjesec', 'Broj darivanja'],
+                ['1', 1000],
+                ['2', 1170],
+                ['3', 660],
+                ['4', 500],
+                ['5', 1000],
+                ['6', 1170],
+                ['7', 660],
+                ['8', 500],
+                ['9', 1000],
+                ['10', 1170],
+                ['11', 660],
+                ['12', 500],
+              ]}
+              options={{
+                chart: {
+                  title: 'Broj darivanja po mjesecu',                 
+                },
+                colors: ['#e53935'],
+              }}              
+            />
           </Grid>  
           <Grid
             item

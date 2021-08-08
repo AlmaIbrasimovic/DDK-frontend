@@ -53,7 +53,7 @@ export class DarivaociDetalji extends Component {
         }).catch(err => { 
         })
         }
-      }
+    }
     render() {
         
         const {classes} = this.props;

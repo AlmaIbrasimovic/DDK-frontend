@@ -43,6 +43,7 @@ const ZadnjeRegistrovaniKorisnici = ({ className, ...rest }) => {
     }).then(response => {
         setDarivaociLista(response.data);
     }).catch(err => {
+      console.log(err)
         toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
     })
   }, []);

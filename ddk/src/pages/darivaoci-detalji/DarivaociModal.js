@@ -113,7 +113,7 @@ const DarivaociModal = ({ className, ...rest }) => {
               ))}
             </TableBody>
             <div id ="prikaziDetaljeModal" class="modal">
-                    <div class="modal-background"></div>
+                  <div class="modal-background"></div>
                         <div class="modal-card">
                         <header class="modal-card-head">
                             <p class="modal-card-title">Podaci o darivaocu</p>
@@ -122,8 +122,8 @@ const DarivaociModal = ({ className, ...rest }) => {
                         <footer class="modal-card-foot">
                           <DarivaociDetalji korisnikID = {korisnikID}/>
                         </footer>      
-                    </div>
-                </div>
+                  </div>
+            </div>
           </Table>
           </TableContainer>
         </Box>    
