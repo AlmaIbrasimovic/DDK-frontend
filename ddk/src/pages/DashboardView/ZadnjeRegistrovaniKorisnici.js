@@ -43,20 +43,19 @@ const ZadnjeRegistrovaniKorisnici = ({ className, ...rest }) => {
     }).then(response => {
         setDarivaociLista(response.data);
     }).catch(err => {
-      console.log(err)
         toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
     })
   }, []);
 
   const showModal = (id) => {
     setKorisnikID (id)
-    console.log(korisnikID)
     document.getElementById("prikaziDetalje").classList.toggle('is-active')
   };
 
   const closeModal = () => {
     document.getElementById("prikaziDetalje").classList.toggle('is-active')
   };
+  
   return (
     <Card
       className={clsx(classes.root, className)}

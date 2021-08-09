@@ -9,7 +9,10 @@ import ZadnjeRegistrovaniKorisnici from './ZadnjeRegistrovaniKorisnici';
 import TopBar from '../../TopBar'
 import UkupnoDarivaoca from './UkupnoDarivaoca'
 import Chart from "react-google-charts";
+import axios from 'axios'
+import {toast} from 'react-toastify';
 
+toast.configure()
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +30,22 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = () => {
   const classes = useStyles();
+  const [darivanjaPoMjesecu, setDarivanjaPoMjesecu] = React.useState([])
+
+  React.useEffect(() => {
+    axios.get('http://localhost:8080/akcija_darivanja_krvi/brojDarivanjaPoMjesecu', {
+      }).then(response => {
+
+        const chartData = [['Mjesec', 'Broj darivanja']]
+        for (let i = 0; i < response.data.length; i++) {
+          chartData.push([i, response.data[i]])
+        }
+        setDarivanjaPoMjesecu(chartData)        
+      }).catch(err => {
+       
+        toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
+      })
+  }, []);
 
   return (
     <Page
@@ -61,25 +80,12 @@ const Dashboard = () => {
               height={'225px'}
               chartType="Bar"
               loader={<div>Loading Chart</div>}
-              data={[
-                ['Mjesec', 'Broj darivanja'],
-                ['1', 1000],
-                ['2', 1170],
-                ['3', 660],
-                ['4', 500],
-                ['5', 1000],
-                ['6', 1170],
-                ['7', 660],
-                ['8', 500],
-                ['9', 1000],
-                ['10', 1170],
-                ['11', 660],
-                ['12', 500],
-              ]}
+              data={darivanjaPoMjesecu}
               options={{
                 chart: {
                   title: 'Broj darivanja po mjesecu',                 
                 },
+                
                 colors: ['#e53935'],
               }}              
             />

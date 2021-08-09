@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const useStyles = (theme) => ({
     root: {
-        height: '45vh'
+        height: '50vh'
     },
 });
 
@@ -59,7 +59,7 @@ export class DarivaociDetalji extends Component {
         const {classes} = this.props;
         return (
                 <Container  alignItems="center" justify="center" overflowY="auto">
-                <Grid container spacing={3}>
+                <Grid  container spacing={6}>
                 <Grid className = {classes.root}
                     item
                     lg={12}
