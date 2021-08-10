@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,6 +11,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import axios from 'axios'
+import {toast} from 'react-toastify';
 
 const useStyles = makeStyles({
   root: {
@@ -39,9 +41,30 @@ const useStyles = makeStyles({
   }
 });
 
-export default function KorisnikInfo() {
+export default function KorisnikInfo(props) {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [datumRodenja, setDatumRodenja] = React.useState();
+  const [spol, setSpol] = React.useState();
+  const [krvnaGrupa, setKrvnaGrupa] = React.useState();
+  const [posljednjeDarivanje, setPosljednjeDarivanja] = React.useState();
+  const [sljedeceDarivanje, setSljedeceDarivanje] = React.useState();
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:8080/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
+    }).then(response => {
+      setDatumRodenja (response.data.datumRodenja);
+      setSpol (response.data.spol)
+      setKrvnaGrupa (response.data.krvnaGrupa)
+      setPosljednjeDarivanja ("21-08-2021")
+      setSljedeceDarivanje ("19-02-2021")
+      if (response.data.spol === 'Z') setSpol ("Žensko")
+      else if (response.data.spol == 'M') setSpol("Muško")
+    }).catch(err => {
+      toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
+    })
+  }, []);
+
 
   return (
     <Card className={classes.root}>
@@ -63,19 +86,19 @@ export default function KorisnikInfo() {
                 Podaci o {t('darivaocu.1')}
               </Typography>
               <Typography variant="h5">
-                <b>Datum rođenja: </b>23.10.1996.
+                <b>Datum rođenja: </b> {datumRodenja}
               </Typography>    
               <Typography variant="h5">
-                <b>Spol: </b>Žensko
+                <b>Spol: </b> {spol}
               </Typography>
               <Typography variant="h5">
-                <b>Krvna grupa:</b> 0+
+                <b>Krvna grupa:</b> {krvnaGrupa}
               </Typography>
               <Typography variant="h5">
-                <b>Posljednje {t('darivanje.1')} krvi:</b> 05.02.2021.
+                <b>Posljednje {t('darivanje.1')} krvi:</b> {posljednjeDarivanje}
               </Typography>   
               <Typography variant="h5">
-                <b>Sljedeće {t('darivanje.1')} krvi</b> 05.06.2021.
+                <b>Sljedeće {t('darivanje.1')} krvi</b> {sljedeceDarivanje}
               </Typography>       
             </CardContent>
           </Grid>
@@ -94,7 +117,6 @@ export default function KorisnikInfo() {
             </ButtonBase>
           </CardActions>
           </Grid>  
-          
         </Grid>
       </Container>
     </Card>

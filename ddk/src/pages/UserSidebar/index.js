@@ -33,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const DashboardLayout = () => {
+const DashboardLayout = (props) => {
   const classes = useStyles();
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
     <div className={classes.root}>
-      <UserSidebar onMobileNavOpen={() => setMobileNavOpen(true)} />
-      <NavBar
+      <UserSidebar userID = {JSON.parse(localStorage.getItem("userID"))} onMobileNavOpen={() => setMobileNavOpen(true)} />
+      <NavBar userID = {JSON.parse(localStorage.getItem("userID"))}
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
       />

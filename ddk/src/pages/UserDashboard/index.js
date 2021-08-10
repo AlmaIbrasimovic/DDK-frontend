@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Grid,
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const UserDashboard = () => {
+const UserDashboard = props => {
   const classes = useStyles();
 
   return (
@@ -33,7 +33,7 @@ const UserDashboard = () => {
       className={classes.root}
       title="Dashboard"
     >
-      <Sidebar/>
+      <Sidebar userID = {JSON.parse(localStorage.getItem("userID"))}/>
       <Container maxWidth={false}>
         <Grid
           container
@@ -46,7 +46,7 @@ const UserDashboard = () => {
             xl={3}
             xs={12}
           >
-            <KorisnikInfo />
+            <KorisnikInfo userID = {JSON.parse(localStorage.getItem("userID"))}/>
           </Grid>
           <Grid
             item  
@@ -55,7 +55,7 @@ const UserDashboard = () => {
             xl={3}
             xs={12}
           >
-            <BrojDarivanja />
+            <BrojDarivanja userID = {JSON.parse(localStorage.getItem("userID"))}/>
           </Grid>  
           <Grid
             item
@@ -73,7 +73,7 @@ const UserDashboard = () => {
             xl={9}
             xs={12}
           >
-             <Priznanja />
+            <Priznanja userID = {JSON.parse(localStorage.getItem("userID"))}/>
           </Grid>
         </Grid>
       </Container>

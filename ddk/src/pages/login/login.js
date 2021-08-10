@@ -20,6 +20,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import logo from '../../assets/img/logo.png';
 import ZaboravljenaLozinka from '../zaboravljena-lozinka/ZaboravljenaLozinka'
+import {toast} from 'react-toastify';
+import jwt_decode from "jwt-decode";
+import axios from 'axios'
+
+toast.configure()
 
 const useStyles = (theme) => ({
     root: {
@@ -69,31 +74,33 @@ export class login extends Component {
         super(props)
         this.state = {
             password: '',
-            email: '',
-            firstName: '',
-            lastName: ''
+            userName: '',
         }
     }
 
-    handleSubmit = () => {
-        {/*    axios.post('http://localhost:8080/user', {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            password: this.state.password,
-            email: this.state.email,
+    handleSubmit = () => {{   
+            axios.post('http://localhost:8080/login', {
+                password: this.state.password,
+                username: this.state.userName,
         }).then(response => {
-            if (response.status === 200 || response.status === 201) toast.success('Your account is successfully created!', {position: toast.POSITION.TOP_RIGHT})
+            var token = jwt_decode(response.data.token);
+            var userID = token.id;
+            localStorage.setItem("userID", JSON.stringify(userID))
+            this.props.history.push({
+                pathname: '/user',
+                state: {
+                   userID: token.id
+                }
+            })
             this.setState({
                 password: '',
-                email: '',
-                firstName: '',
-                lastName: ''
+                username: '',
+                
             });
         }).catch(err => {
             if (err.response.data.message != null) toast.error(err.response.data.message.toString(), {position: toast.POSITION.TOP_RIGHT})
             if (err.response.data.errors != null)  toast.error(err.response.data.errors.toString(), {position: toast.POSITION.TOP_RIGHT})
-        })*/}
-    
+        })}
     }
 
     handleChange = (e) => {
@@ -130,10 +137,10 @@ export class login extends Component {
                                 margin='normal'
                                 required
                                 fullWidth
-                                value={this.state.email}
-                                id="email"
-                                label="Email"
-                                name="email"
+                                value={this.state.userName}
+                                id="userName"
+                                label="User name"
+                                name="userName"
                                 onChange={e => this.handleChange(e)}
                                 className={classes.input}
                                 InputProps={{
@@ -184,7 +191,7 @@ export class login extends Component {
                                     </section>      
                                 </div>
                             </div>
-                            <a href="#" class="button-login">Prijavi se</a>
+                            <a href="#" class="button-login" onClick={() => this.handleSubmit()}>Prijavi se</a>
                             <Grid container className = "login-grid">
                                 <Grid item xs>
                                     <Link href="#" variant="body2" onClick={this.showModal}>
@@ -198,7 +205,6 @@ export class login extends Component {
                                 </Grid>
                             </Grid>
                         </form>
-                        
                         <a className = "login-a" href='https://www.freepik.com/vectors/technology'>Technology vector created by stories - www.freepik.com</a>
                     </div>
                 </Grid>

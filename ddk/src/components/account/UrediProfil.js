@@ -7,7 +7,7 @@ import {
   Grid,
   TextField
 } from '@material-ui/core';
-import './accountProfile.css'
+import './UrediProfil.css'
 const kantoni = [
   {
     value: 'USK',
@@ -51,7 +51,7 @@ const kantoni = [
   }
 ];
 
-const AccountProfileDetails = (props) => {
+const UrediProfil = (props) => {
   const [values, setValues] = useState({
     email: '',
     telefon: '',
@@ -192,4 +192,4 @@ const AccountProfileDetails = (props) => {
   );
 };
 
-export default AccountProfileDetails;
+export default UrediProfil;

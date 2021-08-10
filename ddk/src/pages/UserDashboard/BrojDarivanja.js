@@ -9,6 +9,8 @@ import { Container,Grid,Avatar} from '@material-ui/core';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import axios from 'axios'
+import {toast} from 'react-toastify';
 
 const useStyles = makeStyles({
   root: {
@@ -45,9 +47,19 @@ const useStyles = makeStyles({
   }
 });
 
-export default function BrojDarivanja() {
+export default function BrojDarivanja(props) {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [brojDarivanja, setBrojDarivanja] = React.useState();
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:8080/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
+    }).then(response => {
+      setBrojDarivanja (response.data.brojDarivanjaKrvi)
+    }).catch(err => {
+      toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
+    })
+  }, []);
 
   return (
     <Card className={classes.root}>
@@ -65,11 +77,11 @@ export default function BrojDarivanja() {
             xs={6}
           >
             <CardContent>
-              <Typography className={classes.title}  gutterBottom>
+              <Typography className={classes.title} gutterBottom>
                 Broj {t('darivanja.1')}
               </Typography>
               <Typography className = {classes.number} ariant="h5">
-                8
+                {brojDarivanja}
               </Typography>    
               <Button className = {classes.buttonHistorija} variant="outlined" size = "large" color="secondary">{t('Historija.1')} {t('darivanja.1')}</Button>
             </CardContent>

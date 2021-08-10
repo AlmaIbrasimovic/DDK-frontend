@@ -12,6 +12,8 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './priznanja.css'
+import axios from 'axios'
+import {toast} from 'react-toastify';
 
 const useStyles = makeStyles({
   root: {
@@ -42,9 +44,18 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Priznanja() {
+export default function Priznanja(props) {
   const classes = useStyles();
-  const value = 8;
+  const [brojDarivanja, setBrojDarivanja] = React.useState();
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:8080/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
+    }).then(response => {
+       setBrojDarivanja (response.data.brojDarivanjaKrvi)
+    }).catch(err => {
+      toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
+    })
+  }, []);
 
   return (
     <Card className={classes.root}>
@@ -63,9 +74,9 @@ export default function Priznanja() {
           >
             <div className = "progress-div" style={{ width: "52%"}}>
                 <p>Zlatni znak</p>
-                <CircularProgressbar value={value} minValue = {0} maxValue={75} text={'8/75'}/> 
+                <CircularProgressbar value={brojDarivanja} minValue = {0} maxValue={75} text={brojDarivanja + '/75'}/> 
                 <p>Srebrena plaketa</p>        
-                <CircularProgressbar value={value} minValue = {0} maxValue={37} text={'8/37'}>Alma</CircularProgressbar>
+                <CircularProgressbar value={brojDarivanja} minValue = {0} maxValue={37} text={brojDarivanja + '/37'}></CircularProgressbar>
              </div>      
           </Grid>
          

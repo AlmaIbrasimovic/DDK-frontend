@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -26,8 +26,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import HomeIcon from '@material-ui/icons/Home';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import AccountProfileDetails from '../../../components/account/AccountProfileDetails'
+import UrediProfil from '../../../components/account/UrediProfil'
 import './navBar.css'
+import axios from 'axios'
+import {toast} from 'react-toastify';
 
 const user = {
   avatar: '/static/images/avatars/logo.png',
@@ -86,11 +88,13 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const NavBar = ({ onMobileClose, openMobile }) => {
+const NavBar = (props,{ onMobileClose, openMobile }) => {
   const classes = useStyles();
-  const location = useLocation();
+  const location = useLocation();  
+  const [imePrezime, setImePrezime] = React.useState()
   const { t } = useTranslation();
-  
+
+ 
   const showModal = () => {
     document.getElementById("urediProfilModal").classList.toggle('is-active')
   };
@@ -100,6 +104,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   };
 
   useEffect(() => {
+    axios.get(`http://localhost:8080/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
+    }).then(response => {
+       setImePrezime(response.data.ime + " " + response.data.prezime)
+    }).catch(err => {
+      toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
+    })
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
@@ -125,7 +135,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           className={classes.title}
           variant="h5"
         >
-          {user.imePrezime}
+          {imePrezime}
         </Typography>
         <Button  variant="outlined" size = "medium" color="secondary" onClick={showModal}>Uredi profil</Button>
       </Box>
@@ -185,7 +195,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           <button class="delete" aria-label="close" onClick={closeModal}></button>
         </header>
         <section class="modal-card-body">
-            <AccountProfileDetails/>
+            <UrediProfil/>
         </section>      
       </div>
     </div>
@@ -213,6 +223,5 @@ NavBar.defaultProps = {
   onMobileClose: () => {},
   openMobile: false
 };
-
 
 export default NavBar;

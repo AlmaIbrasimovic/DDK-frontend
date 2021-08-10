@@ -226,16 +226,12 @@ export default function KreirajRacun() {
         datumRodenja: datumRodjenja,
         slatiNotifikacije: false,
         spol: spol,
-        zanimanje: zanimanje
-
+        zanimanje: zanimanje,
       }).then(response => {
-        console.log(response.status.toString())
         if (response.status === 200 || response.status === 201) toast.success('Profil uspješno kreiran!', {position: toast.POSITION.TOP_RIGHT})
       }).catch(err => {
-        console.log(err.response.data)
        toast.error(err.response.data.toString(), {position: toast.POSITION.TOP_RIGHT})
-      })
-    
+      }) 
   }
 
   return (
