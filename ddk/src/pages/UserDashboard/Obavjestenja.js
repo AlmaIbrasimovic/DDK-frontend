@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import moment from 'moment';
-import { v4 as uuid } from 'uuid';
-
+import axios from 'axios'
+import {toast} from 'react-toastify';
 import PropTypes from 'prop-types';
 import {
   Box,
-  Button,
   Card,
   CardHeader,
   Divider,
@@ -17,45 +15,6 @@ import {
   TableRow,
   makeStyles
 } from '@material-ui/core';
-
-
-const data = [
-  {
-    id: uuid(),
-    naziv: 'Darivanje krvi',
-    datum: '23.10.2020.',
-    vrijeme: '14:00'    ,
-    lokacija: 'Paromlinska 3, Sarajevo'
-  },
-  {
-    id: uuid(),
-    naziv: 'Darivanje krvi',
-    datum: '23.10.2020.',
-    vrijeme: '14:00'    ,
-    lokacija: 'Paromlinska 3, Sarajevo'
-  },
-  {
-    id: uuid(),
-    naziv: 'Darivanje krvi',
-    datum: '23.10.2020.',
-    vrijeme: '14:00'    ,
-    lokacija: 'Paromlinska 3, Sarajevo'  
-  },
-  {
-    id: uuid(),
-    naziv: 'Darivanje krvi',
-    datum: '23.10.2020.',
-    vrijeme: '14:00'    ,
-    lokacija: 'Paromlinska 3, Sarajevo' 
-  },
-  {
-    id: uuid(),
-    naziv: 'Darivanje krvi',
-    datum: '23.10.2020.',
-    vrijeme: '14:00'    ,
-    lokacija: 'Paromlinska 3, Sarajevo'  
-  }
-];
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -70,8 +29,26 @@ const useStyles = makeStyles(() => ({
 
 const Obavjestenja = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [orders] = useState(data);
+  const [akcijeDarivanjaKrvi, setAkcijeDarivanjaKrvi] = React.useState([])
 
+  React.useEffect(() => {
+    axios.get('http://localhost:8080/akcija_darivanja_krvi/lista', {
+    }).then(response => {
+      if (response.data.length <= 4) setAkcijeDarivanjaKrvi(response.data)
+      else if (response.data.length > 4){
+        var temp = []
+        for (var j = 0; j<4; j++) {
+          temp[j] = response.data[j]
+        }
+        setAkcijeDarivanjaKrvi(temp)
+      }
+    }).catch(err => {
+      console.log(err)
+      toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
+    })
+  }, []);
+
+  
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -96,29 +73,27 @@ const Obavjestenja = ({ className, ...rest }) => {
                 <h1>Lokacija</h1>
                 </TableCell>
                 <TableCell>
-            
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map((order) => (
+              {akcijeDarivanjaKrvi.map((akcija) => (
                 <TableRow
                   hover
-                  key={order.id}
+                  key={akcija.id}
                 >
-                  <TableCell>
-                    {order.naziv}
-                  </TableCell>
-                  <TableCell>
-                    {order.datum}
-                  </TableCell>
-                  <TableCell>
-                    {order.vrijeme}
-                  </TableCell>
-                  <TableCell>
-                    {order.lokacija}
-                  </TableCell>
-                  
+                <TableCell>
+                  {akcija.naslov}
+                </TableCell>
+                <TableCell>
+                  {akcija.datum}
+                </TableCell>
+                <TableCell>
+                  {akcija.pocetak + " do " + akcija.kraj}
+                </TableCell>
+                <TableCell>
+                  {akcija.grad + " , " + akcija.adresa}
+                </TableCell>
                 </TableRow>
               ))}
             </TableBody>

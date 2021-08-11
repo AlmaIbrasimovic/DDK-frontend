@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import {
-  Box,
   Card,
   CardContent,
-  CardHeader,
   Grid,
   TextField
 } from '@material-ui/core';
 import './UrediProfil.css'
+import axios from 'axios'
+import {toast} from 'react-toastify';
+
+toast.configure()
+
 const kantoni = [
   {
     value: 'USK',
@@ -57,21 +60,42 @@ const UrediProfil = (props) => {
     telefon: '',
     adresaPrebivalista: '',
     mjestoPrebivalista: '',
-    kantonPrebivalista: '',
-    zanimanje:''
+    kantonPrebivalista: 'USK',
+    zanimanje:'',
+    userName: ''
   });
 
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value
-    });
-  };
+  const urediProfil = () => {{   
+    axios.patch(`http://localhost:8080/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
+      adresaPrebivalista: values.adresaPrebivalista,
+      mjestoPrebivalista: values.mjestoPrebivalista,
+      kantonPrebivalista: values.kantonPrebivalista,
+      zanimanje: values.zanimanje,
+      kontaktTelefon: values.telefon,
+      korisnickoIme: values.userName,
+      emailAdresa: values.email
+  }).then(response => {
+    console.log(response.status)
+    if (response.status === 200 || response.status === 201) toast.success('Uspješno ažuriran profil!', {position: toast.POSITION.TOP_RIGHT})
+
+}).catch(err => {
+  console.log(err)
+    if (err.response.data.message != null) toast.error(err.response.data.message.toString(), {position: toast.POSITION.TOP_RIGHT})
+    if (err.response.data.errors != null)  toast.error(err.response.data.errors.toString(), {position: toast.POSITION.TOP_RIGHT})
+})}
+}
+
+const handleChange = (event) => {
+  setValues({
+    ...values,
+    [event.target.name]: event.target.value
+  });
+};
 
   return (
     <form
       autoComplete="off"
-      noValidate
+      validate
       {...props}
     >
       <Card>
@@ -174,6 +198,21 @@ const UrediProfil = (props) => {
             >
               <TextField
                 fullWidth
+                label="Korisničko ime"
+                name="userName"
+                onChange={handleChange}
+                required
+                value={values.userName}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid
+              item
+              md={12}
+              xs={12}
+            >
+              <TextField
+                fullWidth
                 label="Zanimanje"
                 name="zanimanje"
                 onChange={handleChange}
@@ -184,11 +223,11 @@ const UrediProfil = (props) => {
             </Grid>
           </Grid>
         </CardContent>
-
-        <button id = "buttonOK" class="button is-success">Spremi podatke</button>
+        
+        <button id = "buttonOK" class="button" onClick={() => urediProfil()}>Spremi podatke</button>
 
       </Card>
-    </form>
+      </form>
   );
 };
 

@@ -98,7 +98,7 @@ export class KreiranjeAkcijeDarivanja extends Component {
             if (response.status === 200 || response.status === 201) toast.success('Akcija DDK uspješno kreirana!', {position: toast.POSITION.TOP_RIGHT})
             
         }).catch(err => {
-            console.log(err.response)
+           
             toast.error(err.response.data.toString(), {position: toast.POSITION.TOP_RIGHT})
             if (err.response.data.message != null) toast.error(err.response.data.message.toString(), {position: toast.POSITION.TOP_RIGHT})
             if (err.response.data.errors != null)  toast.error(err.response.data.errors.toString(), {position: toast.POSITION.TOP_RIGHT})
