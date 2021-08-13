@@ -14,12 +14,19 @@ import i18next from 'i18next';
 SwiperCore.use([Autoplay, Pagination, Navigation,EffectCube,EffectCoverflow, EffectFlip]);
 
 function Navbar() {
+    const [loggedIn, setLoggedIn] = React.useState('')
+    
     const { t } = useTranslation();
     function handleClickLanguage(lang) {
         i18next.changeLanguage(lang)
         document.getElementsByClassName('has-dropdown')[1].classList.toggle('is-active');
     }
 
+    React.useEffect(() => {
+        setLoggedIn(JSON.parse(localStorage.getItem("loggedIn")))
+        console.log(loggedIn)
+      }, []);
+    
     function clickBurger(event){
         document.getElementsByClassName('navbar-burger')[0].classList.toggle('is-active');
         document.getElementsByClassName('navbar-menu')[0].classList.toggle('is-active');
@@ -45,6 +52,7 @@ function Navbar() {
                 <img src = {logo} class="image is-96x96"/>
                 <Link to ="/" className = "navbar-brand-link">CK FBiH Darivanje krvi</Link>
             </div>
+            
             <div className="navbar-menu" id = "navMenu">
                 <div className="navbar-end">
                     <Link to ="/akcije-darivanja" className="navbar-item">{t('Akcije darivanja krvi.1')}</Link>
@@ -89,20 +97,43 @@ function Navbar() {
                             <Button onClick={()=>handleClickLanguage('hr')}>Hrvatski</Button>
                         </div>
                     </div>
-                    <div className = "navbar-buttons">
+                    {loggedIn == 0 &&
+                        <div className = "navbar-buttons">
                         <Link to ="/login" class="button is-danger is-outlined ">
                             <span class="icon">
                                 <i class="fas fa-user-alt"></i>
                             </span>
-                            <span>Prijavi se</span>
+                        <span>Prijavi se</span>
                         </Link>
                         <Link to = "/kreiraj-racun" class="button is-danger is-outlined">
                             <span class="icon">
                                 <i class="fas fa-user-plus"></i>
                             </span>
-                            <span>Kreiraj račun</span>
+                        <span>Kreiraj račun</span>
                         </Link>
-                    </div>                
+                    </div>
+                    }
+                    {loggedIn == 1 && JSON.parse(localStorage.getItem("rola")) == "korisnik" &&
+                        <div className = "navbar-buttons">
+                        <Link to ="/user" class="button is-danger is-outlined ">
+                            <span class="icon">
+                                <i class="fas fa-user-alt"></i>
+                            </span>
+                        <span>Profil</span>
+                        </Link>
+                        
+                    </div>
+                    }
+                    {loggedIn == 1 && JSON.parse(localStorage.getItem("rola")) == "administrator" &&
+                        <div className = "navbar-buttons">
+                        <Link to ="/admin" class="button is-danger is-outlined ">
+                            <span class="icon">
+                                <i class="fas fa-user-alt"></i>
+                            </span>
+                        <span>Profil</span>
+                        </Link>
+                    </div>
+                    }                
                 </div>
             </div>
         </div>       

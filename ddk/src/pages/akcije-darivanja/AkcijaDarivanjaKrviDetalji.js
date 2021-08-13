@@ -28,7 +28,7 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
             adresa: '',
             datum: '',
             pocetak: '',
-            kraj:'',            
+            kraj:''       
         }; 
     }
 
@@ -59,7 +59,8 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
         }
     }
     render() {
-        let role = "administrator";
+        let rola = JSON.parse(localStorage.getItem("rola"))
+        console.log(JSON.parse(localStorage.getItem("rola")))
         const {classes} = this.props;
         return (
                 <Container overflowY="auto">
@@ -86,7 +87,7 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
                 <Typography variant="h6">
                     <b>Kraj akcije:</b> {this.state.kraj}
                 </Typography>      
-                {role === "administrator" ? (
+                {rola === "administrator" ? (
                     <Button variant="outlined" color="secondary" className={classes.button} onClick={() => this.obrisiAkciju(this.state.id)}>
                         <Delete />
                         Obriši akciju

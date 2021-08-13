@@ -33,8 +33,7 @@ import {toast} from 'react-toastify';
 
 const user = {
   avatar: '/static/images/avatars/logo.png',
-  imePrezime: 'Alma Ibrašimović',
-  krvnaGrupa: '0+'
+
 };
 
 const items = [
@@ -88,7 +87,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const NavBar = (props,{ onMobileClose, openMobile }) => {
+const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();  
   const [imePrezime, setImePrezime] = React.useState()
@@ -102,7 +101,7 @@ const NavBar = (props,{ onMobileClose, openMobile }) => {
   const closeModal = () => {
     document.getElementById("urediProfilModal").classList.toggle('is-active')
   };
-
+  
   useEffect(() => {
     axios.get(`http://localhost:8080/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
     }).then(response => {
@@ -171,7 +170,6 @@ const NavBar = (props,{ onMobileClose, openMobile }) => {
       </Box>
       <Box flexGrow={1} />    
       </Box>
-    
   );
 
   return (
@@ -212,7 +210,6 @@ const NavBar = (props,{ onMobileClose, openMobile }) => {
     </>
   );
 };
-
 
 NavBar.propTypes = {
   onMobileClose: PropTypes.func,

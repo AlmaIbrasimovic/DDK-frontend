@@ -17,6 +17,7 @@ import LogOut from '@material-ui/icons/Input';
 import './UserSidebar.css';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -37,15 +38,23 @@ const UserSidebar = ({
   
   const classes = useStyles();
   const [notifications] = useState([]);
+  const history = useHistory();
+
+  function logOut(){
+    localStorage.removeItem("rola");
+    localStorage.removeItem("userID");
+    localStorage.setItem("loggedIn", 0)
+    history.push('/')
+  }
+
   function handleClickLanguage(lang) {
+   
     i18next.changeLanguage(lang)
     if(i18next.language == "bos") {
-      console.log("tusaahe")
       document.getElementById("button-bos").style.textDecoration = "underline";
       document.getElementById("button-hrv").style.textDecoration = "none";
     } 
     else if (i18next.language == "hr") {
-      console.log("tuhe")
       document.getElementById("button-bos").style.textDecoration = "none";
       document.getElementById("button-hrv").style.textDecoration = "underline";
     }
@@ -73,7 +82,7 @@ const UserSidebar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton onClick={()=>logOut()} color="inherit">
             <LogOut />
           </IconButton>
         </Hidden>

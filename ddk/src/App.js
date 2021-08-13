@@ -15,7 +15,7 @@ import ZastoDarovati from './pages/zasto-darovati/ZastoDarivati'
 import ProcesDarivanja from './pages/proces-darivanja/ProcesDarivanja'
 import Apozitivna from './pages/krvne-grupe/APozitivna'
 import Aneg from './pages/krvne-grupe/ANegativna'
-import Dashboard from './pages/DashboardView'
+import AdminProfile from './pages/DashboardView'
 import Bpos from './pages/krvne-grupe/BPozitivna'
 import Bneg from './pages/krvne-grupe/BNegativna'
 import ABpos from './pages/krvne-grupe/ABPozitivna'
@@ -62,7 +62,7 @@ function App() {
        
        <ThemeProvider theme={theme}>
           <GlobalStyles />
-            <Route path='/admin' exact component={Dashboard} />
+            <Route path='/admin' exact component={AdminProfile} />
             <Route path='/user' exact component={UserProfile} />
         </ThemeProvider>
       </Switch>

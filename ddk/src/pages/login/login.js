@@ -85,21 +85,30 @@ export class login extends Component {
         }).then(response => {
             var token = jwt_decode(response.data.token);
             var userID = token.id;
+            var rola = token.role;
+            localStorage.setItem("rola", JSON.stringify(rola))
             localStorage.setItem("userID", JSON.stringify(userID))
-            this.props.history.push({
-                pathname: '/user',
-                state: {
-                   userID: token.id
-                }
-            })
-            this.setState({
-                password: '',
-                username: '',
+            localStorage.setItem("loggedIn", 1)
+            if (rola == "korisnik") {
                 
-            });
+                this.props.history.push({
+                    pathname: '/user',
+                    state: {
+                    userID: token.id
+                    }
+                })
+            }
+            else if (rola == "administrator") {
+                this.props.history.push({
+                    pathname: '/admin',
+                    state: {
+                       userID: token.id
+                    }
+                })
+            } 
         }).catch(err => {
-            if (err.response.data.message != null) toast.error(err.response.data.message.toString(), {position: toast.POSITION.TOP_RIGHT})
-            if (err.response.data.errors != null)  toast.error(err.response.data.errors.toString(), {position: toast.POSITION.TOP_RIGHT})
+            if (err.response.status === 401) toast.error("Pogrešno korisničko ime ili lozinka!", {position: toast.POSITION.TOP_RIGHT})
+            else toast.error("Greška!", {position: toast.POSITION.TOP_RIGHT})
         })}
     }
 
@@ -139,7 +148,7 @@ export class login extends Component {
                                 fullWidth
                                 value={this.state.userName}
                                 id="userName"
-                                label="User name"
+                                label="Korisničko ime"
                                 name="userName"
                                 onChange={e => this.handleChange(e)}
                                 className={classes.input}

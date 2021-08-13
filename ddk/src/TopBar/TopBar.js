@@ -17,6 +17,7 @@ import LogOut from '@material-ui/icons/Input';
 import './TopBar.css';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -36,6 +37,15 @@ const TopBar = ({
 }) => {
   const classes = useStyles();
   const [notifications] = useState([]);
+  const history = useHistory();
+
+  function logOut(){
+    localStorage.removeItem("rola");
+    localStorage.removeItem("userID");
+    localStorage.setItem("loggedIn", 0)
+    history.push('/')
+  }
+
   function handleClickLanguage(lang) {
     i18next.changeLanguage(lang)
     if(i18next.language == "bos") {
@@ -70,7 +80,7 @@ const TopBar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={()=>logOut()}>
             <LogOut />
           </IconButton>
         </Hidden>
