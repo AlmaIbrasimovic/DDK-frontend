@@ -4,17 +4,25 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { Container} from '@material-ui/core';
 import axios from 'axios'
+import Update from '@material-ui/icons/DynamicFeed';
 import Delete from '@material-ui/icons/DeleteForever';
 import Button from '@material-ui/core/Button';
+import AzurirajAkciju from './AzuriranjeAkcijeDarivanja'
 import {toast} from 'react-toastify';
+
 toast.configure()
 const useStyles = (theme) => ({
     root: {
         height: '30vh',
         
     },
-    button: {
+    buttonObrisi: {
         marginTop: '25px',   
+        color: 'red'
+    },
+    buttonAzuriraj: {
+        marginTop: '25px',   
+        marginLeft: '20px',
         color: 'red'
     }
 });
@@ -32,6 +40,14 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
         }; 
     }
 
+    showModal ()  {
+        document.getElementById("azurirajAkcijuModal").classList.toggle('is-active')
+    };
+      
+    closeModal = () => {
+        document.getElementById("azurirajAkcijuModal").classList.toggle('is-active')
+    };
+
     obrisiAkciju = (id) =>{
         axios.delete(`http://localhost:8080/akcija_darivanja_krvi/${id}`)  
             .then(res => {  
@@ -41,7 +57,7 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
             toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
         })
     }
-    
+
     componentDidUpdate(prevProps) {
         if (this.props.akcijaDarivanjaID !== prevProps.akcijaDarivanjaID) {
           axios.get(`http://localhost:8080/akcija_darivanja_krvi/${this.props.akcijaDarivanjaID}`, {
@@ -54,7 +70,7 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
             this.setState({ kraj: response.data.kraj});
             
         }).catch(err => { 
-       
+        
         })
         }
     }
@@ -63,8 +79,7 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
         console.log(JSON.parse(localStorage.getItem("rola")))
         const {classes} = this.props;
         return (
-                <Container overflowY="auto">
-                
+                <Container overflowY="auto" >
                 <Grid className = {classes.root}
                     item
                     lg={12}
@@ -86,14 +101,34 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
                 </Typography>
                 <Typography variant="h6">
                     <b>Kraj akcije:</b> {this.state.kraj}
-                </Typography>      
+                </Typography>   
+                
                 {rola === "administrator" ? (
-                    <Button variant="outlined" color="secondary" className={classes.button} onClick={() => this.obrisiAkciju(this.state.id)}>
+                    <Button variant="outlined" color="secondary" className={classes.buttonObrisi} onClick={() => this.obrisiAkciju(this.state.id)}>
                         <Delete />
                         Obriši akciju
                     </Button>
                 ) : (
-                <div/>)}       
+                <div/>)}
+                {rola === "administrator" ? (
+                    <Button variant="outlined" color="secondary" className={classes.buttonAzuriraj} onClick={() => this.showModal()}>
+                        <Update />
+                        Ažuriraj akciju
+                    </Button>
+                ) : (
+                <div/>)}
+                <div id ="azurirajAkcijuModal" class="modal">
+                  <div class="modal-background"></div>
+                        <div class="modal-card">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">Ažuriranje</p>
+                            <button class="delete" aria-label="close" onClick={() => this.closeModal()}></button>
+                        </header>
+                        <footer class="modal-card-foot">
+                          <AzurirajAkciju akcijaID = {this.state.id}/>
+                        </footer>      
+                  </div>
+            </div>       
           </Grid>
       </Container>
     );}

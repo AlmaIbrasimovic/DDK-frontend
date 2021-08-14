@@ -107,6 +107,7 @@ export class login extends Component {
                 })
             } 
         }).catch(err => {
+            console.log(err)
             if (err.response.status === 401) toast.error("Pogrešno korisničko ime ili lozinka!", {position: toast.POSITION.TOP_RIGHT})
             else toast.error("Greška!", {position: toast.POSITION.TOP_RIGHT})
         })}

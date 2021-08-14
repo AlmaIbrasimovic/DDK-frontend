@@ -100,7 +100,7 @@ componentDidMount() {
                 return { style: { backgroundColor } };
               }}
             />
-             <div id ="prikaziDetaljeAkcijeModal" class="modal">
+            <div id ="prikaziDetaljeAkcijeModal" class="modal">
                   <div class="modal-background"></div>
                         <div class="modal-card">
                         <header class="modal-card-head">

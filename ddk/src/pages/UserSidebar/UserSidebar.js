@@ -18,6 +18,7 @@ import './UserSidebar.css';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useHistory } from "react-router-dom";
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -84,6 +85,9 @@ const UserSidebar = ({
           </IconButton>
           <IconButton onClick={()=>logOut()} color="inherit">
             <LogOut />
+          </IconButton>
+          <IconButton color="inherit">
+            <SettingsIcon />
           </IconButton>
         </Hidden>
         <Hidden lgUp>

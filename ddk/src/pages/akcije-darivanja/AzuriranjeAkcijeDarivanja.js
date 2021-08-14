@@ -1,60 +1,51 @@
 import React, {Component} from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
 import {withStyles} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import Title from '@material-ui/icons/ListAlt';
 import Address from '@material-ui/icons/Home';
-import Time from '@material-ui/icons/Schedule';
-import Typography from '@material-ui/core/Typography';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import './KreiranjeAkcijeDarivanja.css'
 import './KreiranjeAkcijeDarivanja.scss'
-import Lottie from 'react-lottie';
-import kreiranjeDDK from '../../lotties/kreiranjeDDK.json'
+import Update from '@material-ui/icons/DynamicFeed';
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import axios from 'axios'
 import {toast} from 'react-toastify';
 import 'rc-time-picker/assets/index.css';
 
 toast.configure()
+
 const useStyles = (theme) => ({
     root: {
         height: '100%',  
         display: 'flex',
-        alignItems: 'center',  
+        alignItems: 'center',
     },
+   
     paper: {
         margin: theme.spacing(3, 1),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         width:'100%',
-        fontSize: '11',  
+        fontSize: '11', 
+    },
+    buttonAzuriraj: {
+        marginTop: '25px',  
+        color: 'red'
     },
     avatar: {      
         backgroundColor:'rgb(204, 0, 0)'
     },
+
     form: {
-        width: '90%',
-        marginTop: theme.spacing(6),   
+        width: '90%', 
     }
 });
 
-const animationOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: kreiranjeDDK,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
-
-
-export class KreiranjeAkcijeDarivanja extends Component {
+export class AzuriranjeAkcijeDarivanja extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -63,14 +54,12 @@ export class KreiranjeAkcijeDarivanja extends Component {
             adresa: '',
             datum: '',
             pocetak: '',
-            kraj: '',
-            proba:''
+            kraj: ''
         }
-        this.handleBack = this.handleBack.bind(this); 
     }
 
-    kreirajAkcijuDarivanja = () => {
-        axios.post('http://localhost:8080/akcija_darivanja_krvi', {
+    azurirajAkcijuDarivanja = () => {
+        axios.patch(`http://localhost:8080/akcija_darivanja_krvi/${this.props.akcijaID}`, {
             naslov: this.state.naslov,
             adresa: this.state.adresa,
             grad: this.state.grad,
@@ -79,7 +68,7 @@ export class KreiranjeAkcijeDarivanja extends Component {
             kraj: this.state.kraj
 
         }).then(response => {
-            if (response.status === 200 || response.status === 201) toast.success('Akcija DDK uspješno kreirana!', {position: toast.POSITION.TOP_RIGHT})
+            if (response.status === 200 || response.status === 201) toast.success('Akcija darivanja krvi uspješno ažurirana!', {position: toast.POSITION.TOP_RIGHT})
             
         }).catch(err => {
            
@@ -87,10 +76,6 @@ export class KreiranjeAkcijeDarivanja extends Component {
             if (err.response.data.message != null) toast.error(err.response.data.message.toString(), {position: toast.POSITION.TOP_RIGHT})
             if (err.response.data.errors != null)  toast.error(err.response.data.errors.toString(), {position: toast.POSITION.TOP_RIGHT})
         })
-    }
-
-    handleBack() {
-        this.props.history.goBack();
     }
     
     handleChange = (e) => {
@@ -104,22 +89,16 @@ export class KreiranjeAkcijeDarivanja extends Component {
         const {classes} = this.props;
         
         return (
-            <div className = "kreiraj-akciju-div" >
+            <div className = "azuriraj-akciju-div" >
                 <Container maxWidth="md" className={classes.container} alignItems="center" justify="center" overflowY="auto">
                 <CssBaseline />
                 <div className={classes.paper}>
-                    <Lottie 
-                        options={animationOptions}
-                        height={220}
-                        width={220}
-                    />
                 <form className={classes.form}>
                     <Grid container spacing={1} >
-                        <Grid item align="center" lg={4} md={4} sm={12}>
+                        <Grid item align="center" lg={12} md={12} sm={12}>
                             <TextField
                                 variant="outlined"
                                 margin='normal'
-                                required
                                 fullWidth
                                 value={this.state.naslov}
                                 id="naslov"
@@ -136,12 +115,11 @@ export class KreiranjeAkcijeDarivanja extends Component {
                                 }}
                             />
                         </Grid>
-                        <Grid item align="center" lg={4} md={4} sm={12}>
+                        <Grid item align="center" lg={6} md={4} sm={12}>
                             <TextField
                                 variant="outlined"
                                 margin='normal'
-                                required
-                                fullWidth
+                                size = 'small'
                                 value={this.state.grad}
                                 id="grad"
                                 label="Grad održavanja"
@@ -159,12 +137,11 @@ export class KreiranjeAkcijeDarivanja extends Component {
                         </Grid>
                         
                         
-                        <Grid item align="center" lg={4} md={4} sm={12}>
+                        <Grid item align="center" lg={6} md={4} sm={12}>
                             <TextField
                                 variant="outlined"
                                 margin='normal'
-                                required
-                                fullWidth                               
+                                size = 'small'                             
                                 value={this.state.adresa}
                                 id="adresa"
                                 label="Adresa održavanja"
@@ -180,11 +157,10 @@ export class KreiranjeAkcijeDarivanja extends Component {
                                 }}
                             />
                         </Grid>
-                        <Grid item lg={4} md={4} sm={12} align="center">
+                        <Grid item lg={12} md={4} sm={12} align="center">
                             <TextField
                                 variant="outlined"
                                 margin='normal'
-                                required
                                 fullWidth
                                 type="date"
                                 value={this.state.datum}
@@ -198,11 +174,10 @@ export class KreiranjeAkcijeDarivanja extends Component {
                                 }}
                             />
                         </Grid>
-                        <Grid item lg={4} md={4} sm={12} align="center">
+                        <Grid item lg={6} md={4} sm={12} align="center">
                             <TextField
                                 variant="outlined"
                                 margin='normal'
-                                required
                                 fullWidth
                                 id="pocetak"
                                 label="Početak održavanja akcije"
@@ -219,11 +194,10 @@ export class KreiranjeAkcijeDarivanja extends Component {
                                 }}
                             />
                         </Grid>
-                        <Grid item lg={4} md={4} sm={12} align="center">
+                        <Grid item lg={6} md={4} sm={12} align="center">
                             <TextField
                                 variant="outlined"
                                 margin='normal'
-                                required
                                 fullWidth
                                 id="kraj"
                                 label="Kraj održavanja akcije"
@@ -241,16 +215,10 @@ export class KreiranjeAkcijeDarivanja extends Component {
                             />
                         </Grid>
                     </Grid>
-                    <button className="button-kreiraj-akciju" onClick={this.kreirajAkcijuDarivanja}>Kreiraj akciju darivanja</button>
-                    <div className="navigationButtonsLeft">
-                        <button class="button is-danger is-outlined" onClick={this.handleBack}>
-                            <span class="icon is-small">
-                            <i class="fas fa-backward"></i>
-                            </span>
-                            <span>Nazad</span>
-                        </button>
-                    </div>
-                    
+                    <Button variant="outlined" color="secondary" className={classes.buttonAzuriraj} onClick={this.azurirajAkcijuDarivanja}>
+                        <Update />
+                        Ažuriraj akciju
+                    </Button>
                 </form>
               </div>
             </Container>
@@ -259,4 +227,4 @@ export class KreiranjeAkcijeDarivanja extends Component {
     }
 }
 
-export default withStyles(useStyles)(KreiranjeAkcijeDarivanja);
+export default withStyles(useStyles)(AzuriranjeAkcijeDarivanja);

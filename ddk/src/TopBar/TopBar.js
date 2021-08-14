@@ -18,6 +18,7 @@ import './TopBar.css';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useHistory } from "react-router-dom";
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -70,6 +71,7 @@ const TopBar = ({
         <Box flexGrow={1} />
           <button id = "button-bos" onClick={()=>handleClickLanguage('bos')} class="button is-ghost">Bosanski</button>
           <button id = "button-hrv" onClick={()=>handleClickLanguage('hr')} class="button is-ghost">Hrvatski</button>
+          
         <Hidden mdDown>
           <IconButton color="inherit">
             <Badge
@@ -80,8 +82,12 @@ const TopBar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton>
+          
           <IconButton color="inherit" onClick={()=>logOut()}>
             <LogOut />
+          </IconButton>
+          <IconButton color="inherit">
+            <SettingsIcon />
           </IconButton>
         </Hidden>
         <Hidden lgUp>

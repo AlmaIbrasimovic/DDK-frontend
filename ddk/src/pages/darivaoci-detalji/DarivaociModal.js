@@ -6,8 +6,9 @@ import Paper from '@material-ui/core/Paper';
 import axios from 'axios'
 import {toast} from 'react-toastify';
 import DarivaociDetalji from './DarivaociDetalji'
-
+import Select from 'react-select';
 import PropTypes from 'prop-types';
+import './DarivaociModal.css'
 import {
   Box,
   Button,
@@ -30,14 +31,15 @@ toast.configure()
 const useStyles = makeStyles(() => ({
   root: {
     borderRadius: '15px',
-    overflowX: 'auto'
-   
+    overflowX: 'auto',  
+
+  
   },
   actions: {
     justifyContent: 'flex-end'
   },
   table: {
-    
+    marginTop: '20px'
   }
 }));
 
@@ -45,10 +47,33 @@ const DarivaociModal = ({ className, ...rest }) => {
   const classes = useStyles();
   const [korisnikID, setKorisnikID] = React.useState([])
   const [darivaociLista, setDarivaociLista] = React.useState([])
+  const [krvnaGrupa, setKrvnaGrupa] = React.useState('')
+
+  const krvneGrupe = [
+    { value: 'sve', label: 'Sve' },
+    { value: '0+', label: '0+' },
+    { value: '0-', label: '0-' },
+    { value: 'A+', label: 'A+' },
+    { value: 'A-', label: 'A-' },
+    { value: 'B+', label: 'B+' },
+    { value: 'B-', label: 'B-' },
+    { value: 'AB+', label: 'AB+' },
+    { value: 'AB-', label: 'AB-' }
+  ]
 
   const showModal = (id) => {
     setKorisnikID (id)
     document.getElementById("prikaziDetaljeModal").classList.toggle('is-active')
+  };
+
+  const handleChange = (event) => {
+    setKrvnaGrupa(event.value);
+    axios.get(`http://localhost:8080/korisnici/krvna_grupa/${event.value}`, {
+    }).then(response => {
+        setDarivaociLista(response.data);
+    }).catch(err => {
+        toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
+    })
   };
 
   const closeModal = () => {
@@ -69,7 +94,11 @@ const DarivaociModal = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader title="Osnovni podaci" />
+      <h6 className = "pretrazi">Pretraži po krvnoj grupi: </h6>
+      <Select maxMenuHeight={100} id = "selectKrvnaGrupa"
+          onChange={handleChange}
+          options={krvneGrupe} 
+      />
       <Divider />
         <Box minWidth={600}>
         <TableContainer component={Paper}>
@@ -108,7 +137,7 @@ const DarivaociModal = ({ className, ...rest }) => {
                 <TableCell>
                     <Button size="medium" color="secondary" variant="outlined" onClick={() => showModal(darivaoc.id)}>Prikaži</Button>
                 </TableCell>
-                
+      
                 </TableRow>
               ))}
             </TableBody>

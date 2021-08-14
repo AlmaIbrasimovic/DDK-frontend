@@ -13,6 +13,10 @@ toast.configure()
 
 const kantoni = [
   {
+    value: '',
+    label: 'Poništi odabir',
+  },
+  {
     value: 'USK',
     label: 'USK',
   },
@@ -60,7 +64,7 @@ const UrediProfil = (props) => {
     telefon: '',
     adresaPrebivalista: '',
     mjestoPrebivalista: '',
-    kantonPrebivalista: 'USK',
+    kantonPrebivalista: '',
     zanimanje:'',
     userName: ''
   });
@@ -115,7 +119,6 @@ const handleChange = (event) => {
             label="Email adresa"
             name="email"
             onChange={handleChange}
-            required
             value={values.email}
             variant="outlined"
             />
@@ -145,7 +148,6 @@ const handleChange = (event) => {
                 label="Mjesto prebivališta"
                 name="mjestoPrebivalista"
                 onChange={handleChange}
-                required
                 value={values.mjestoPrebivalista}
                 variant="outlined"
               />
@@ -160,7 +162,6 @@ const handleChange = (event) => {
                 label="Adresa prebivališta"
                 name="adresaPrebivalista"
                 onChange={handleChange}
-                required
                 value={values.adresaPrebivalista}
                 variant="outlined"
               />
@@ -175,9 +176,7 @@ const handleChange = (event) => {
                 label="Kanton prebivališta"
                 name="kantonPrebivalista"
                 onChange={handleChange}
-                required
                 select
-                SelectProps={{ native: true }}
                 value={values.kantonPrebivalista}
                 variant="outlined"
               >
@@ -201,7 +200,6 @@ const handleChange = (event) => {
                 label="Korisničko ime"
                 name="userName"
                 onChange={handleChange}
-                required
                 value={values.userName}
                 variant="outlined"
               />
@@ -216,7 +214,6 @@ const handleChange = (event) => {
                 label="Zanimanje"
                 name="zanimanje"
                 onChange={handleChange}
-                required
                 value={values.zanimanje}
                 variant="outlined"
               />
