@@ -23,6 +23,7 @@ import ABneg from './pages/krvne-grupe/ABNegativna'
 import nulaPos from './pages/krvne-grupe/NulaPozitivna'
 import nulaNeg from './pages/krvne-grupe/NulaNegativna'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import ProtectedRoute from './pages/protected-route/ProtectedRoute'
 import GlobalStyles from './components/GlobalStyles';
 import theme from './theme';
 import { ThemeProvider } from '@material-ui/core';
@@ -57,13 +58,11 @@ function App() {
        <Route path='/faq' exact component={faq} />
        <Route path='/app/account' exact component={Account} />
        <Route path = '/app/kreiraj-akciju-darivanja-krvi' exact component = {KreiranjeAkcijeDarivanja}/>
-       <Route path='/zaboravljena-lozinka' exact component={ZaboravljenaLozinka} />
-       
-       
+       <Route path='/zaboravljena-lozinka' exact component={ZaboravljenaLozinka} />  
        <ThemeProvider theme={theme}>
           <GlobalStyles />
-            <Route path='/admin' exact component={AdminProfile} />
-            <Route path='/user' exact component={UserProfile} />
+            <ProtectedRoute path='/admin' component={AdminProfile}/>
+            <ProtectedRoute path='/user' component={UserProfile} /> 
         </ThemeProvider>
       </Switch>
    </Router>

@@ -88,7 +88,7 @@ export class login extends Component {
             var rola = token.role;
             localStorage.setItem("rola", JSON.stringify(rola))
             localStorage.setItem("userID", JSON.stringify(userID))
-            localStorage.setItem("loggedIn", 1)
+            localStorage.setItem("loggedIn", true)
             if (rola == "korisnik") {
                 
                 this.props.history.push({
@@ -156,7 +156,9 @@ export class login extends Component {
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
-                                            <EmailIcon/>
+                                            <IconButton>
+                                                <EmailIcon/>
+                                            </IconButton>
                                         </InputAdornment>
                                     ),
                                 }}

@@ -43,7 +43,7 @@ const TopBar = ({
   function logOut(){
     localStorage.removeItem("rola");
     localStorage.removeItem("userID");
-    localStorage.setItem("loggedIn", 0)
+    localStorage.setItem("loggedIn", false)
     history.push('/')
   }
 
