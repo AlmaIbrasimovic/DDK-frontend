@@ -31,6 +31,8 @@ import Account from './pages/Account'
 import ZaboravljenaLozinka from './pages/zaboravljena-lozinka/ZaboravljenaLozinka'
 import KreiranjeAkcijeDarivanja  from './pages/akcije-darivanja/KreiranjeAkcijeDarivanja';
 import UserProfile from './pages/UserDashboard/index'
+import Izvjestaji from './pages/izvjestaji/IzvjestajiLayout'
+
 function App() {
 
   return (
@@ -59,8 +61,10 @@ function App() {
        <Route path='/app/account' exact component={Account} />
        <Route path = '/app/kreiraj-akciju-darivanja-krvi' exact component = {KreiranjeAkcijeDarivanja}/>
        <Route path='/zaboravljena-lozinka' exact component={ZaboravljenaLozinka} />  
+       
        <ThemeProvider theme={theme}>
           <GlobalStyles />
+            <ProtectedRoute path='/izvjestaji' component={Izvjestaji}/> 
             <ProtectedRoute path='/admin' component={AdminProfile}/>
             <ProtectedRoute path='/user' component={UserProfile} /> 
         </ThemeProvider>

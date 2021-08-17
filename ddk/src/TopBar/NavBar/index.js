@@ -116,7 +116,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           />
           
           <NavItem
-               href = '/login'
+               href = '/izvjestaji'
                icon = {AssignmentIcon}
                title = 'Izvještaji'
           />

@@ -2,9 +2,9 @@ import React from 'react';
 import Navbar from './Navbar'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
-import Cobain from './3.jpg'
-import Rick from './1.jpg'
-import Thor from './2.jpg'
+import Cobain from './cobain.jpg'
+import Rick from './rick.jpg'
+import Thor from './thor.jpg'
 import SwiperCore, { Autoplay,Pagination, Navigation, EffectFade, EffectCube, EffectCoverflow, EffectFlip} from "swiper"
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/navigation/navigation.scss';
@@ -22,9 +22,9 @@ function HomePage() {
                 autoplay={{ delay: 3000 }}
                 pagination={{ clickable: true }}
                 navigation
-                effect="coverflow"
+                effect="fade"
                 onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}                >
+                onSwiper={(swiper) => console.log(swiper)}>
                 <SwiperSlide>
                     <img src={Thor}></img>
                 </SwiperSlide>
