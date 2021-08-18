@@ -32,6 +32,7 @@ import ZaboravljenaLozinka from './pages/zaboravljena-lozinka/ZaboravljenaLozink
 import KreiranjeAkcijeDarivanja  from './pages/akcije-darivanja/KreiranjeAkcijeDarivanja';
 import UserProfile from './pages/UserDashboard/index'
 import Izvjestaji from './pages/izvjestaji/IzvjestajiLayout'
+import KrvneGrupeLayout from './pages/krvne-grupe/KrvneGrupeLayout'
 
 function App() {
 
@@ -67,6 +68,7 @@ function App() {
             <ProtectedRoute path='/izvjestaji' component={Izvjestaji}/> 
             <ProtectedRoute path='/admin' component={AdminProfile}/>
             <ProtectedRoute path='/user' component={UserProfile} /> 
+            <ProtectedRoute path='/krvne-grupe-korisnici' component={KrvneGrupeLayout}/>
         </ThemeProvider>
       </Switch>
    </Router>

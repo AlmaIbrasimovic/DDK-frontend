@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import DatePicker from "react-datepicker";
 import 'moment-timezone';
 import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from "react-router-dom";
 
 toast.configure()
 const spolovi = [
@@ -144,7 +145,8 @@ export default function KreirajRacun() {
   const [email, setEmail] = React.useState('');
   const [brojDarivanja, setBrojDarivanja] = React.useState('');
   const [zanimanje, setZanimanje] = React.useState('');
-  
+  const history = useHistory()
+
   const handleChange = (event) => {
     setSpol(event.target.value);
   };
@@ -229,6 +231,10 @@ export default function KreirajRacun() {
         zanimanje: zanimanje,
       }).then(response => {
         if (response.status === 200 || response.status === 201) toast.success('Profil uspješno kreiran!', {position: toast.POSITION.TOP_RIGHT})
+        history.push({
+          pathname: '/login',
+          
+      })
       }).catch(err => {
        toast.error(err.response.data.toString(), {position: toast.POSITION.TOP_RIGHT})
       }) 

@@ -105,7 +105,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
             title = {t('Darivaoci.1')}
           />
           <NavItem
-             href = '/app/products'
+             href = '/krvne-grupe-korisnici'
              icon = {BloodGroupsIcon}
              title = 'Krvne grupe'
           />
