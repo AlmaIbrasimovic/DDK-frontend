@@ -26,8 +26,8 @@ const useStyles = makeStyles({
     borderRadius: '15px'
   },
   title: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 17,
+    
     color: 'white'
   },
   cover: {
@@ -87,7 +87,7 @@ export default function KrveGrupeDetalji(props) {
           >
             <CardContent>
               <Typography className={classes.title} color="textSecondary" gutterBottom>
-                {t('Darivaoci.1')} sa {props.krvnaGrupa} grupom
+                {t('Darivaoci.1')} sa {props.krvnaGrupa} krvnom grupom
               </Typography>
               <Typography variant="h4" component="h2">
                 {brojDarivaoca}

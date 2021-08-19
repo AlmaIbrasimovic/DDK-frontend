@@ -67,7 +67,7 @@ const DarivaociKrvnaGrupa =({props,  className, ...rest }) => {
     }).catch(err => {
         toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})
     })
-  }, []);
+  }, [darivaociLista]);
 
   return (
     <Card

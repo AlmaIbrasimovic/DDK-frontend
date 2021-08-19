@@ -12,7 +12,8 @@ import TopBar from '../../TopBar'
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
-    paddingTop: theme.spacing(2),
+    paddingTop: theme.spacing(4),
+    paddingLeft: theme.spacing(1),
     width: '83.5%',
     marginLeft: '16.5%',
 
@@ -39,12 +40,75 @@ const KrveGrupeLayout = props => {
         >
         <Grid
             item
-            lg={6}
+            lg={4}
             md={6}
             xl={6}
             xs={12}
         >
-          <KrvneGrupeDetalji krvnaGrupa={"0+"}/>
+          <KrvneGrupeDetalji krvnaGrupa={"0+"}/>         
+        </Grid>
+        <Grid
+            item
+            lg={4}
+            md={6}
+            xl={6}
+            xs={12}
+        >
+          <KrvneGrupeDetalji krvnaGrupa={"0-"}/>         
+        </Grid>
+        <Grid
+            item
+            lg={4}
+            md={6}
+            xl={6}
+            xs={12}
+        >
+          <KrvneGrupeDetalji krvnaGrupa={"A+"}/>         
+        </Grid>
+        <Grid
+            item
+            lg={4}
+            md={6}
+            xl={6}
+            xs={12}
+        >
+          <KrvneGrupeDetalji krvnaGrupa={"A-"}/>         
+        </Grid>
+        <Grid
+            item
+            lg={4}
+            md={6}
+            xl={6}
+            xs={12}
+        >
+          <KrvneGrupeDetalji krvnaGrupa={"B+"}/>         
+        </Grid>
+        <Grid
+            item
+            lg={4}
+            md={6}
+            xl={6}
+            xs={12}
+        >
+          <KrvneGrupeDetalji krvnaGrupa={"B-"}/>         
+        </Grid>
+        <Grid
+            item
+            lg={4}
+            md={6}
+            xl={6}
+            xs={12}
+        >
+          <KrvneGrupeDetalji krvnaGrupa={"AB+"}/>         
+        </Grid>
+        <Grid
+            item
+            lg={4}
+            md={6}
+            xl={6}
+            xs={12}
+        >
+          <KrvneGrupeDetalji krvnaGrupa={"AB-"}/>         
         </Grid>
         </Grid>
       </Container>
