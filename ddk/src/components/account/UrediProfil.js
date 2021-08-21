@@ -70,7 +70,7 @@ const UrediProfil = (props) => {
   });
 
   const urediProfil = () => {{   
-    axios.patch(`http://localhost:8080/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
+    axios.patch(`https://blood-donation-backend-ck.herokuapp.com/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
       adresaPrebivalista: values.adresaPrebivalista,
       mjestoPrebivalista: values.mjestoPrebivalista,
       kantonPrebivalista: values.kantonPrebivalista,
@@ -78,7 +78,7 @@ const UrediProfil = (props) => {
       kontaktTelefon: values.telefon,
       korisnickoIme: values.userName,
       emailAdresa: values.email
-  }).then(response => {
+  },{headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem("token"))}`}}).then(response => {
     console.log(response.status)
     if (response.status === 200 || response.status === 201) toast.success('Uspješno ažuriran profil!', {position: toast.POSITION.TOP_RIGHT})
 

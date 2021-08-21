@@ -49,8 +49,8 @@ export default function Priznanja(props) {
   const [brojDarivanja, setBrojDarivanja] = React.useState();
 
   React.useEffect(() => {
-    axios.get(`http://localhost:8080/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
-    }).then(response => {
+    axios.get(`https://blood-donation-backend-ck.herokuapp.com/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem("token"))}`}})
+    .then(response => {
        setBrojDarivanja (response.data.brojDarivanjaKrvi)
     }).catch(err => {
       toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})

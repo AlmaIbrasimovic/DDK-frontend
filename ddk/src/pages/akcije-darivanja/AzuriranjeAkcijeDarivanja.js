@@ -59,7 +59,7 @@ export class AzuriranjeAkcijeDarivanja extends Component {
     }
 
     azurirajAkcijuDarivanja = () => {
-        axios.patch(`http://localhost:8080/akcija_darivanja_krvi/${this.props.akcijaID}`, {
+        axios.patch(`https://blood-donation-backend-ck.herokuapp.com/akcija_darivanja_krvi/${this.props.akcijaID}`, {
             naslov: this.state.naslov,
             adresa: this.state.adresa,
             grad: this.state.grad,

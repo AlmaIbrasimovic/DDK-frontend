@@ -68,7 +68,7 @@ const DarivaociModal = ({ className, ...rest }) => {
 
   const handleChange = (event) => {
     setKrvnaGrupa(event.value);
-    axios.get(`http://localhost:8080/korisnici/krvna_grupa/${event.value}`, {
+    axios.get(`https://blood-donation-backend-ck.herokuapp.com/korisnici/krvna_grupa/${event.value}`, {
     }).then(response => {
         setDarivaociLista(response.data);
     }).catch(err => {
@@ -81,8 +81,8 @@ const DarivaociModal = ({ className, ...rest }) => {
   };
   
   React.useEffect(() => {
-    axios.get('http://localhost:8080/korisnici', {
-    }).then(response => {
+    axios.get('https://blood-donation-backend-ck.herokuapp.com/korisnici', {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem("token"))}`}})
+    .then(response => {
         setDarivaociLista(response.data);
     }).catch(err => {
         toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})

@@ -61,7 +61,7 @@ const DarivaociKrvnaGrupa =({props,  className, ...rest }) => {
   };
   
   React.useEffect(() => {
-    axios.get(`http://localhost:8080/korisnici/krvna_grupa/${JSON.parse(localStorage.getItem("krvnaGrupa"))}`, {
+    axios.get(`https://blood-donation-backend-ck.herokuapp.com/korisnici/krvna_grupa/${JSON.parse(localStorage.getItem("krvnaGrupa"))}`, {
     }).then(response => {
         setDarivaociLista(response.data);
     }).catch(err => {

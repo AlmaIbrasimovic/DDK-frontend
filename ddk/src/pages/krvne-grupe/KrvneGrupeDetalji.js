@@ -51,7 +51,7 @@ export default function KrveGrupeDetalji(props) {
   const [brojDarivaoca, setBrojDarivaoca] = React.useState([])
 
   React.useEffect(() => {
-    axios.get(`http://localhost:8080/korisnici/krvna_grupa/${props.krvnaGrupa}`, {
+    axios.get(`https://blood-donation-backend-ck.herokuapp.com/korisnici/krvna_grupa/${props.krvnaGrupa}`, {
       }).then(response => {
         setBrojDarivaoca(response.data.length);
       }).catch(err => {

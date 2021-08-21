@@ -49,7 +49,7 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
     };
 
     obrisiAkciju = (id) =>{
-        axios.delete(`http://localhost:8080/akcija_darivanja_krvi/${id}`)  
+        axios.delete(`https://blood-donation-backend-ck.herokuapp.com/akcija_darivanja_krvi/${id}`, {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem("token"))}`}})  
             .then(res => {  
                 toast.success("Akcija uspješno obrisana", {position: toast.POSITION.TOP_RIGHT})
                 
@@ -60,7 +60,7 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.akcijaDarivanjaID !== prevProps.akcijaDarivanjaID) {
-          axios.get(`http://localhost:8080/akcija_darivanja_krvi/${this.props.akcijaDarivanjaID}`, {
+          axios.get(`https://blood-donation-backend-ck.herokuapp.com/akcija_darivanja_krvi/${this.props.akcijaDarivanjaID}`, {
         }).then(response => {
             this.setState({ id : response.data.id})
             this.setState({ grad : response.data.grad});
@@ -76,7 +76,6 @@ export class AkcijaDarivanjaKrviDetalji extends Component {
     }
     render() {
         let rola = JSON.parse(localStorage.getItem("rola"))
-        console.log(JSON.parse(localStorage.getItem("rola")))
         const {classes} = this.props;
         return (
                 <Container overflowY="auto" >

@@ -34,8 +34,9 @@ export class DarivaociDetalji extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.korisnikID !== prevProps.korisnikID) {
-          axios.get(`http://localhost:8080/korisnici/${this.props.korisnikID}`, {
-        }).then(response => {
+          axios.get(`https://blood-donation-backend-ck.herokuapp.com/korisnici/${this.props.korisnikID}`, 
+          {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem("token"))}`}})
+          .then(response => {
             this.setState({ imePrezime: response.data.ime + " " + response.data.prezime});
             this.setState({ datumRodenja: response.data.datumRodenja});
             this.setState({ mjestoRodenja: response.data.mjestoRodenja});

@@ -211,7 +211,7 @@ export default function KreirajRacun() {
     var danas = new Date(),
     datumKreiranjaRacuna = danas.getFullYear() + '-' + danas.toLocaleString("en-US", { month: "2-digit" }) + '-' + danas.toLocaleString("en-US", { day : '2-digit'})
     
-    axios.post('http://localhost:8080/register', {
+    axios.post('https://blood-donation-backend-ck.herokuapp.com/register', {
         ime: ime,
         prezime: prezime,
         korisnickoIme: korisnickoIme,

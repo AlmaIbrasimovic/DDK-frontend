@@ -70,15 +70,15 @@ export class KreiranjeAkcijeDarivanja extends Component {
     }
 
     kreirajAkcijuDarivanja = () => {
-        axios.post('http://localhost:8080/akcija_darivanja_krvi', {
+        axios.post('https://blood-donation-backend-ck.herokuapp.com/akcija_darivanja_krvi', {
             naslov: this.state.naslov,
             adresa: this.state.adresa,
             grad: this.state.grad,
             datum: this.state.datum,
             pocetak: this.state.pocetak,
-            kraj: this.state.kraj
-
-        }).then(response => {
+            kraj: this.state.kraj,        
+        }, {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem("token"))}`}}).then(response => {
+            toast.success('Akcija DDK uspješno kreirana!', {position: toast.POSITION.TOP_RIGHT})
             if (response.status === 200 || response.status === 201) toast.success('Akcija DDK uspješno kreirana!', {position: toast.POSITION.TOP_RIGHT})
             
         }).catch(err => {

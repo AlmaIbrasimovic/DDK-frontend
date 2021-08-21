@@ -32,7 +32,7 @@ const Obavjestenja = ({ className, ...rest }) => {
   const [akcijeDarivanjaKrvi, setAkcijeDarivanjaKrvi] = React.useState([])
 
   React.useEffect(() => {
-    axios.get('http://localhost:8080/akcija_darivanja_krvi/lista', {
+    axios.get('https://blood-donation-backend-ck.herokuapp.com/akcija_darivanja_krvi/lista', {
     }).then(response => {
       if (response.data.length <= 4) setAkcijeDarivanjaKrvi(response.data)
       else if (response.data.length > 4){

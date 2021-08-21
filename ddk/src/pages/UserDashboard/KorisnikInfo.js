@@ -51,8 +51,8 @@ export default function KorisnikInfo(props) {
   const [sljedeceDarivanje, setSljedeceDarivanje] = React.useState();
 
   React.useEffect(() => {
-    axios.get(`http://localhost:8080/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {
-    }).then(response => {
+    axios.get(`https://blood-donation-backend-ck.herokuapp.com/korisnici/${JSON.parse(localStorage.getItem("userID"))}`, {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem("token"))}`}})
+    .then(response => {
       setDatumRodenja (response.data.datumRodenja);
       setSpol (response.data.spol)
       setKrvnaGrupa (response.data.krvnaGrupa)

@@ -39,8 +39,8 @@ const ZadnjeRegistrovaniKorisnici = ({ className, ...rest }) => {
   const [darivaociLista, setDarivaociLista] = React.useState([])
 
   React.useEffect(() => {
-    axios.get('http://localhost:8080/korisnici/zadnjiRegistrovani', {
-    }).then(response => {
+    axios.get('https://blood-donation-backend-ck.herokuapp.com/korisnici/zadnjiRegistrovani',  {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem("token"))}`}})
+    .then(response => {
         setDarivaociLista(response.data);
     }).catch(err => {
         toast.error(err.response.toString(), {position: toast.POSITION.TOP_RIGHT})

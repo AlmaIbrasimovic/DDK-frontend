@@ -51,8 +51,8 @@ export default function UkupnoDarivaoca() {
   const [brojDarivaoca, setBrojDarivaoca] = React.useState([])
 
   React.useEffect(() => {
-    axios.get('http://localhost:8080/korisnici', {
-      }).then(response => {
+    axios.get('https://blood-donation-backend-ck.herokuapp.com/korisnici',  {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem("token"))}`}})
+    .then(response => {
         setBrojDarivaoca(response.data.length);
       }).catch(err => {
        

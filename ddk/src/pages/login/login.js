@@ -79,14 +79,15 @@ export class login extends Component {
     }
 
     handleSubmit = () => {{   
-            axios.post('http://localhost:8080/login', {
+            axios.post('https://blood-donation-backend-ck.herokuapp.com/login', {
                 password: this.state.password,
-                username: this.state.userName,
+                email: this.state.userName,
         }).then(response => {
-            var token = jwt_decode(response.data.token);
+            var token = jwt_decode(response.data.token);           
             var userID = token.id;
             var rola = token.role;
             localStorage.setItem("rola", JSON.stringify(rola))
+            localStorage.setItem("token", JSON.stringify(response.data.token))
             localStorage.setItem("userID", JSON.stringify(userID))
             localStorage.setItem("loggedIn", true)
             if (rola == "korisnik") {

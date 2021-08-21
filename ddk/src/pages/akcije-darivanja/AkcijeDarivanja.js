@@ -59,7 +59,7 @@ closeModal = () => {
 };
 
 componentDidMount() {    
-    axios.get('http://localhost:8080/akcija_darivanja_krvi/lista', {
+    axios.get('https://blood-donation-backend-ck.herokuapp.com/akcija_darivanja_krvi/lista', {
     }).then(res => {
         var temp = [];       
         for (var i = 0; i < res.data.length; i++) {
